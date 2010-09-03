@@ -46,7 +46,7 @@ newEntity{ base = "BASE_MEDICINE",
 }
 newEntity{ base = "BASE_MEDICINE",
 	name = "adhesive bandages",
-	color = colors.LIGHT_RED,
+	color = colors.DARK_RED,
 	desc = [[A small box of adhesive bandages.]],
 	level_range = {1, 10},
 	rarity = 14,
