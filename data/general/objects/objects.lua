@@ -19,3 +19,4 @@ load("/data/general/objects/guns.lua")
 
 -- Utility
 load("/data/general/objects/medicine.lua")
+load("/data/general/objects/documents.lua")

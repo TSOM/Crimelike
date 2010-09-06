@@ -105,7 +105,7 @@ function _M:newGame()
 		self.player.energy.value = self.energy_to_act
 		self.paused = true
 		print("[PLAYER BIRTH] resolved!")
-		self.player:grantQuest(self.player.starting_quest)
+		--self.player:grantQuest(self.player.starting_quest)
 		--self:registerDialog(require("mod.dialogs.IntroDialog").new(self.player))
 		
 	end)

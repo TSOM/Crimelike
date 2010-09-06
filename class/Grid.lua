@@ -24,12 +24,32 @@ function _M:init(t, no_default)
 	engine.Grid.init(self, t, no_default)
 end
 
+function _M:lock_check()
+
+
+
+end
+
+function _M:unlock_door()
+
+end
+
 function _M:block_move(x, y, e, act, couldpass)
+if act then
+print(self.locked)
+end
 	-- Open doors
+	if self.locked and act then
+	game.logPlayer(act, "It's locked.")
+	return true
+	end
+	
 	if self.door_opened and act then
+		--if self.lock_strength == nil or self:lock_check() then
 		local opened = game.zone:makeEntityByName(game.level, 'terrain', self.door_opened)
 		game.zone:addEntity(game.level, opened, "terrain", x, y)
 		return true
+		--end
 	elseif self.door_opened and not couldpass then
 		return true
 	end

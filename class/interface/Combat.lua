@@ -72,7 +72,7 @@ local function firearm_projectile(tx, ty, tg, self)
 	local weapon, ammo = tg.firearm.weapon, tg.firearm.ammo
 
 	local target = game.level.map(tx, ty, game.level.map.ACTOR)
-	if not target then return end
+	--if not target then return end
 
 	local talent = self:getTalentFromId(tg.talent_id)
 
@@ -87,11 +87,12 @@ local function firearm_projectile(tx, ty, tg, self)
         dam = dam * dammult
     end
     
-	if dam > 0 then
+	--if dam > 0 then
 		local grids = self:project(tg, tx, ty, function(txx, tyy)
+		print('ESPLODE')
 			DamageType:get(damtype).projector(self, txx, tyy, damtype, dam)
 		end)
-	end
+	--end
 end
 
 function _M:firearmShoot(tg)

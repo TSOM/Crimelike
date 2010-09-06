@@ -33,8 +33,7 @@ newEntity{
 			str=0.7,
 		},
 	},
-	faction = "staff",
-	mutation = "ZOMBIE",
+	faction = "civilian",
 	corpse = { name="Corpse of a human", display="&", color=colors.RED,
 		type="corpse", subtype="human",
 		encumber=150,
@@ -71,7 +70,6 @@ newEntity{ base = "BASE_NPC_HUMAN",
 	display = "p", color=colors.BLUE,
 	desc = [[A patient.]],
 	level_range = {1, 4}, exp_worth = 1,
-	vload = resolvers.rngavg(0,5),
 	corpse = {name = "Corpse of a patient."}
 }
 

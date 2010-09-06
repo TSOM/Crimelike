@@ -23,10 +23,9 @@ return {
 	all_lited = true,
 	persistant = "zone",
 	all_remembered = true,
-	all_lited = true,
 	generator =  {
 		map = {
-			class = "engine.generator.map.TileSet",
+			class = "mod.class.generator.map.TileSetFull",
 			tileset = {"7x7/base", "7x7/slum",},
 			[' '] = "STREET",
 			['#'] = "BRICKWALL",
