@@ -63,6 +63,7 @@ ActorResource:defineResource("Left Leg", "lleg", nil, "heal_regen", "Injury to e
 ActorResource:defineResource("Right Leg", "rleg", nil, "heal_regen", "Injury to either leg can reduce mobility.")
 ActorResource:defineResource("Head", "head", nil, "heal_regen", "Injury to the head can cause blackouts and death.")
 ActorResource:defineResource("Torso", "torso", nil, "heal_regen", "Most representative of your total health.")
+ActorResource:defineResource("Sleep", "sleep", nil, "sleep_regen", "You long term fatiuge, elevated primarily by sleeping")
 
 -- Actor stats
 ActorStats:defineStat("Strength", "str", 10, 1, 100, "Strength defines your character's ability to apply physical force. It increases your melee damage, damage with heavy weapons, your chance to resist physical effects, and carrying capacity.")
@@ -81,7 +82,15 @@ ActorAI:loadDefinition("/mod/ai/")
 Birther:loadDefinition("/data/birth/descriptors.lua")
 
 -- Factions
-Faction:add{ name="Cribs", reaction={Players=-0, Staff=0} }
+
+Faction:add{ name="Player", reaction={Players=0, Staff=0} }
+--For random NPC's who don't have a faction, but become hostile to players.
+Faction:add{ name="Enemy", reaction={Players=-100}}
+--Similar to the Enemy Faction
+Faction:add{ name="Ally", reaction={Players=100}}
+--The vast majority of people.
+Faction:add{ name="Civilian", reaction={Players=0} }
+Faction:add{ name="Cribs", reaction={Players=0} }
 Faction:add{ name="Police", reaction={Players=0, Cribs=0} }
 Faction:setInitialReaction("players", "Police", 0)
 

@@ -47,6 +47,7 @@ newBirthDescriptor{
 -- Sexes
 load("/data/birth/sexes.lua")
 
+load("/data/birth/races.lua")
 newBirthDescriptor{
 	type = "role",
 	name = "Policeman",
@@ -101,6 +102,23 @@ newBirthDescriptor{
 		starting_zone = "slums",
 	},
 }
+newBirthDescriptor{
+	type = "location",
+	name = "Test Land",
+	desc = {
+		"Secret stuff in here.",
+	},
+	copy = {
+		unused_talents = 50,
+		unused_generics = 50,
+		starting_level = 0,
+		starting_zone = "testland",
+		resolvers.equip{ id=true,
+			{type="weapon", subtype="pistol", autoreq=true},
+			{type="ammo", subtype="clip", autoreq=true},
+		},
+	}}
+	
 newBirthDescriptor{
 	type = "location",
 	name = "Sandbox",

@@ -17,6 +17,8 @@
 -- The basic stuff used to damage a grid
 setDefaultProjector(function(src, x, y, dam_type, dam)
 	local target = game.level.map(x, y, Map.ACTOR)
+	print('Target')
+	print(target)
 	if target then
 		local flash = game.flash.NEUTRAL
 		if target == game.player then flash = game.flash.BAD end
@@ -36,6 +38,22 @@ setDefaultProjector(function(src, x, y, dam_type, dam)
 			game.flyers:add(sx, sy, 30, (rng.range(0,2)-1) * 0.5, -3, tostring(-math.ceil(dam)), {text_color.r, text_color.g, text_color.b})
 		end
 		return dam
+	else
+	target = game.level.map(x, y, Map.TERRAIN)
+	--target:takeHit(dam, src)
+	print('Health')
+	print(target.health)
+		if target.health then
+		target.health = target.health - dam
+		print(target.health)
+			if target.health <= 0 then
+				if target.on_destroyed then
+				--Makes the new destroyed tile
+				game.level.map(x, y, game.level.map.TERRAIN, game.zone.grid_list[target.on_destroyed])
+				end
+			game.level:removeEntity(target)
+			end
+		end
 	end
 	return 0
 end)

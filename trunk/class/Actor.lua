@@ -132,6 +132,14 @@ function _M:move(x, y, force)
 			local chat = Chat.new(target.can_talk, target, self)
 			chat:invoke()
 		end
+		if game.level.map:checkEntity(x, y, engine.Map.TERRAIN, "block_move") then
+		game.flash:empty()
+		game.logPlayer(self, "Can't move that way. ")
+			if game.level.map:checkEntity(x, y, engine.Map.TERRAIN, "locked") then
+			game.logPlayer(self, "It's locked")
+			end
+		return moved
+		end
 	end
 	-- Check if the actor is running
 	if self:attr("sprint") then

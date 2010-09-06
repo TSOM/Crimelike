@@ -44,18 +44,3 @@ newEntity{ base = "BASE_MEDICINE",
 		return "destroy", true
 	end}
 }
-newEntity{ base = "BASE_MEDICINE",
-	name = "adhesive bandages",
-	color = colors.DARK_RED,
-	desc = [[A small box of adhesive bandages.]],
-	level_range = {1, 10},
-	rarity = 14,
-	cost = 2,
-
-	use_simple = { name="heal some life", use = function(self, who)
-		game.logSeen(who, "%s applies some %s!", who.name:capitalize(), self:getName{no_count=true})
-		local tlevel = who:getTalentLevel(Talents.T_FIRST_AID_EXPERTISE)
-		who:setEffect(who.EFF_REGENERATION, 1 + tlevel * 2, {power=(1 + tlevel * 2)})
-		return "destroy", true
-	end}
-}

@@ -59,7 +59,6 @@ function _M:init(t, no_default)
 
 	mod.class.Actor.init(self, t, no_default)
 	engine.interface.PlayerHotkeys.init(self, t)
-
 	self.descriptor = {}
 end
 
@@ -188,7 +187,6 @@ function _M:sneakToggle()
 	else
 	game.logPlayer(self, "You start sneaking.")
 	self.sneakid = self:addTemporaryValue("sneak", 1)
-	print('Add Sneak')
 	end
 
 end
