@@ -20,7 +20,7 @@ newBirthDescriptor{
 	name = "Female",
 	desc =
 	{
-		"You are a chick.",
+		"You are a biological female.",
 	},
 	copy = { female=true, },
 }
@@ -30,7 +30,7 @@ newBirthDescriptor{
 	name = "Male",
 	desc =
 	{
-		"You are a dude.",
+		"You are a biological male.",
 	},
 	copy = { male=true, },
 }
