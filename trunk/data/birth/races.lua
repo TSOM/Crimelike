@@ -28,10 +28,10 @@ newBirthDescriptor{
 
 newBirthDescriptor{
 	type = "race",
-	name = "Asain",
+	name = "Asian",
 	desc =
 	{
-		"Races are purely cosemtic..",
+		"Races are purely cosemtic.",
 	},
 	copy = { race="Asian", },
 }
@@ -42,7 +42,7 @@ newBirthDescriptor{
 	name = "Caucasian",
 	desc =
 	{
-		"Races are purely cosemtic..",
+		"Races are purely cosemtic.",
 	},
 	copy = { race="Caucasian", },
 }
@@ -53,7 +53,7 @@ newBirthDescriptor{
 	name = "Indian",
 	desc =
 	{
-		"Races are purely cosemtic..",
+		"Races are purely cosemtic.",
 	},
 	copy = { race="Indian", },
 }
@@ -63,7 +63,7 @@ newBirthDescriptor{
 	name = "Latino",
 	desc =
 	{
-		"Races are purely cosemtic..",
+		"Races are purely cosemtic.",
 	},
 	copy = { race="Latino", },
 }
@@ -73,7 +73,7 @@ newBirthDescriptor{
 	name = "Middle Eastern",
 	desc =
 	{
-		"Races are purely cosemtic..",
+		"Races are purely cosemtic.",
 	},
 	copy = { race="Middle Eastern", },
 }
