@@ -21,7 +21,7 @@ newBirthDescriptor{
 	name = "African",
 	desc =
 	{
-		"Races are purely cosemtic.",
+		"Africans are generally dark skinned, with black hair. Races are purely cosmetic.",
 	},
 	copy = { race="African", },
 }
@@ -31,7 +31,7 @@ newBirthDescriptor{
 	name = "Asian",
 	desc =
 	{
-		"Races are purely cosemtic.",
+		"Asians generally have light to tanned skin, and black hair. Races are purely cosmetic.",
 	},
 	copy = { race="Asian", },
 }
@@ -42,7 +42,7 @@ newBirthDescriptor{
 	name = "Caucasian",
 	desc =
 	{
-		"Races are purely cosemtic.",
+		"Caucasians usually have fair skin and brown to light-colored hair. Races are purely cosmetic.",
 	},
 	copy = { race="Caucasian", },
 }
@@ -53,7 +53,7 @@ newBirthDescriptor{
 	name = "Indian",
 	desc =
 	{
-		"Races are purely cosemtic.",
+		"Indians generally have tanned to dark skin, and black hair. Races are purely cosmetic.",
 	},
 	copy = { race="Indian", },
 }
@@ -63,7 +63,7 @@ newBirthDescriptor{
 	name = "Latino",
 	desc =
 	{
-		"Races are purely cosemtic.",
+		"Latinos are generally light to tanned skinned, with brown to black hair. Races are purely cosmetic.",
 	},
 	copy = { race="Latino", },
 }
@@ -73,7 +73,7 @@ newBirthDescriptor{
 	name = "Middle Eastern",
 	desc =
 	{
-		"Races are purely cosemtic.",
+		"Middle Easterns generally have light to tanned, dark skin, and dark hair. Races are purely cosmetic.",
 	},
 	copy = { race="Middle Eastern", },
 }
