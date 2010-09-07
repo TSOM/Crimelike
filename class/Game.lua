@@ -97,7 +97,7 @@ function _M:newGame()
 	Map:setViewerActor(self.player)
 	self:setupDisplayMode()
 
-	local birth = Birther.new(self.player, {"base", "sex", "role", "location" }, function()
+	local birth = Birther.new(self.player, {"base", "sex", "race", "role", "location" }, function()
 		self:changeLevel(self.player.starting_level, self.player.starting_zone)
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
