@@ -22,6 +22,8 @@ newEntity{
 	encumber = 4,
 	combat = { damrange = 1.4,},
 	ranged = "gun",
+	volume = 4,
+	body = {AMMO = {1,2}},
 	desc = [[Guns are used to shoot bullets.]],
 }
 
@@ -40,9 +42,24 @@ newEntity{ base = "BASE_GUN",
 }
 
 newEntity{ base = "BASE_GUN",
+	name = "Browning Hi-Power",
+	level_range = {1, 10},
+	require = { stat = { str=10 }, },
+	cost = 5,
+	rarity = 4,
+	material_level = 1,
+	combat = {
+		range = 8,
+		physspeed = 0.8,
+		dammod = {agi=0.7},
+	},
+}
+
+newEntity{ base = "BASE_GUN",
 	define_as = "BAZOOKA",
 	name = "Easter Egg Bazooka",
 	rarity = false,
+	volume = 7,
 	desc = [[This classic shoulder-mounted bazooka appears to have been modified.  The bore of the barrel is quite a bit narrower than it should be... about egg-sized in fact.]],
 }
 
@@ -60,6 +77,7 @@ newEntity{
 	ranged_ammo = "gun",
 	quantity = 9,
 	desc = [[A clip of nine bullets.]],
+	volume = 2,
 	stacking = false,
 	particle = "bullet_impact",
 }
@@ -89,5 +107,6 @@ newEntity{ base = "BASE_CLIP",
 		radius = 2,
 	},
 	quantity = 24,
+	volume = 4,
 	particle = "egg_splat",
 }

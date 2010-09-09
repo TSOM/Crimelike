@@ -18,9 +18,11 @@ require "engine.class"
 require "engine.Object"
 require "engine.interface.ObjectActivable"
 require "engine.interface.ObjectIdentify"
+require "mod.class.interface.ComplexInventory"
 
 module(..., package.seeall, class.inherit(
 	engine.Object,
+	mod.class.interface.ComplexInventory,
 	engine.interface.ObjectActivable,
 	engine.interface.ObjectIdentify
 ))
@@ -29,6 +31,7 @@ function _M:init(t, no_default)
 	t.encumber = t.encumber or 0
 
 	engine.Object.init(self, t, no_default)
+	mod.class.interface.ComplexInventory.init(self, t)
 	engine.interface.ObjectActivable.init(self, t)
 	engine.interface.ObjectIdentify.init(self, t)
 end

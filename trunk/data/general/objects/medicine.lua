@@ -23,6 +23,7 @@ newEntity{
 	display = "!", color=colors.WHITE,
 	encumber = 0.2,
 	stacking = true,
+	volume = 2,
 	desc = [[Generic medicine.]],
 }
 
@@ -36,7 +37,7 @@ newEntity{ base = "BASE_MEDICINE",
 	level_range = {1, 10},
 	rarity = 3,
 	cost = 3,
-
+	volume = 3,
 	use_simple = { name="heal some life", use = function(self, who)
 		game.logSeen(who, "%s applies a %s!", who.name:capitalize(), self:getName{no_count=true})
 		local tlevel = who:getTalentLevel(Talents.T_FIRST_AID_EXPERTISE)

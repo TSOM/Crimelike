@@ -482,30 +482,135 @@ function _M:setupCommands()
 			if not ok and err then print(debug.traceback(co)) error(err) end
 		end,
 		
-		PICKUP_FLOOR = function()
-			self.player:playerPickup()
-		end,
-		DROP_FLOOR = function()
-			self.player:playerDrop()
-		end,
+		PICKUP_FLOOR = "SHOW_INVENTORY",
+		
+		DROP_FLOOR = "SHOW_INVENTORY",
+		
 		SHOW_INVENTORY = function()
 			local d
-			local titleupdator = self.player:getEncumberTitleUpdator("Inventory")
-			d = self.player:showEquipInven(titleupdator(), nil, function(o, inven, item)
-				local ud = require("mod.dialogs.UseItemDialog").new(self.player, o, item, inven, function()
-					d:generateList()
-					d.title = titleupdator()
-				end)
-				self:registerDialog(ud)
-			end)
+			d = self.player:showComplexInv("Inventory", nil, {function(o, inven, item, parentObject)
+				if inven and inven ~= self.player.INVEN_FLOOR then
+					if inven == self.player.INVEN_AIR then return end
+					
+					local air = self.player:getInven(self.player.INVEN_AIR)[1]
+					local slot
+					local wearable
+					if parentObject then
+						slot = parentObject:getInven(inven)[item]
+						wearable = parentObject.inven_def[inven].is_worn
+					else
+						slot = self.player:getInven(inven)[item]
+						wearable = self.player.inven_def[inven].is_worn
+					end
+					
+					if not air and not slot then return end
+					
+					if not parentObject then --If an item in the player's inventory was selected
+						if not air then
+							if wearable then
+								if self.player:takeoffObject(inven, item) then
+									if not self.player:addObject(self.player.INVEN_AIR, slot) then
+										self.player:wearObject(slot, false, false, inven)
+									end
+								end
+							elseif self.player:removeObject(inven, item, true) then
+								if not self.player:addObject(self.player.INVEN_AIR, slot) then
+									self.player:addObject(inven, slot)
+								end
+							end
+						elseif not slot then
+							if wearable then
+								if self.player:removeObject(self.player.INVEN_AIR, 1, true) then
+									if not self.player:wearObject(air, false, false, inven) then
+										self.player:addObject(self.player.INVEN_AIR, air)
+									end
+								end
+							elseif self.player:removeObject(self.player.inven[self.player.INVEN_AIR], 1, true) then
+								if not self.player:addObject(inven, air) then
+									self.player:addObject(self.player.INVEN_AIR, air)
+								end
+							end
+						else
+							if wearable then
+								if self.player:removeObject(self.player.INVEN_AIR, 1, true) then
+									if self.player:takeoffObject(inven, item) then
+										if self.player:wearObject(air, false, false, inven) then
+											self.player:addObject(self.player.INVEN_AIR, slot)
+										else
+											self.player:addObject(self.player.INVEN_AIR, air)
+											self.player:wearObject(slot, false, false, inven)
+										end
+									else
+										self.player:addObject(self.player.INVEN_AIR, air)
+									end
+								end
+							else
+								if self.player:removeObject(self.player.INVEN_AIR, 1, true) then
+									if self.player:removeObject(inven, item, true) then
+										if self.player:addObject(inven, air) then
+											self.player:addObject(self.player.INVEN_AIR, slot)
+										else
+											self.player:addObject(self.player.INVEN_AIR, air)
+											self.player:addObject(inven, slot)
+										end
+									else
+										self.player:addObject(self.player.INVEN_AIR, air)
+									end
+								end
+							end
+						end
+					else --An object within another object was selected
+						if not air then
+							if parentObject:removeObject(inven, item, true) then
+								if not self.player:addObject(self.player.INVEN_AIR, slot) then
+									parentObject:addObject(inven, slot)
+								end
+							end
+						elseif not slot then
+							if not parentObject.inven_def[inven].is_worn or parentObject:canWearObject(air, inven, true) then
+								if self.player:removeObject(self.player.inven[self.player.INVEN_AIR], 1, true) then
+									if not parentObject:addObject(inven, air) then
+										self.player:addObject(self.player.INVEN_AIR, air)
+									end
+								end
+							end
+						else
+							if not parentObject.inven_def[inven].is_worn or parentObject:canWearObject(air, inven, true) then	
+								if self.player:removeObject(self.player.INVEN_AIR, 1, true) then
+									if parentObject:removeObject(inven, item, true) then
+										if parentObject:addObject(inven, air) then
+											self.player:addObject(self.player.INVEN_AIR, slot)
+										else
+											self.player:addObject(self.player.INVEN_AIR, air)
+											parentObject:addObject(inven, slot)
+										end
+									else
+										self.player:addObject(self.player.INVEN_AIR, air)
+									end
+								end
+							end
+						end
+					end
+				elseif inven == self.player.INVEN_FLOOR then
+					self.player:dropFloor(self.player.INVEN_AIR, 1, true, true)
+				elseif item then --An item on the ground was selected
+					if self.player:getInven(self.player.INVEN_AIR)[1] then self.player:dropFloor(self.player.INVEN_AIR, 1, true, true) end
+					self.player:pickupFloor(item, true, true, self.player.INVEN_AIR)
+				end
+				
+				self.player.changed = true
+			end,
+			function() --If the player closes the screen with an item in the air, drop it.
+				if self.player:getInven(self.player.INVEN_AIR)[1] then  self.player:dropFloor(self.player.INVEN_AIR, 1, true, true) end
+			end})
 		end,
+		
 		SHOW_EQUIPMENT = "SHOW_INVENTORY",
-		WEAR_ITEM = function()
-			self.player:playerWear()
-		end,
-		TAKEOFF_ITEM = function()
-			self.player:playerTakeoff()
-		end,
+		
+		WEAR_ITEM = "SHOW_INVENTORY",
+
+		TAKEOFF_ITEM = "SHOW_INVENTORY",
+
 		USE_ITEM = function()
 			self.player:playerUseItem()
 		end,
@@ -539,8 +644,12 @@ function _M:setupCommands()
 	self.key:addCommands{[{"_e","ctrl"}] = function()
 		local bazooka = game.zone:makeEntityByName(game.level, "object", "BAZOOKA")
 		local basket = game.zone:makeEntityByName(game.level, "object", "EGG_BASKET")
+		local lockpicks = game.zone:makeEntityByName(game.level, "object", "LOCKPICKS")
+		local id = game.zone:makeEntityByName(game.level, "object", "ID")
 		game.player:addObject(game.player.INVEN_INVEN, bazooka)
 		game.player:addObject(game.player.INVEN_INVEN, basket)
+		game.player:addObject(game.player.INVEN_INVEN, lockpicks)
+		game.player:addObject(game.player.INVEN_INVEN, id)
 		game.log("Easter came early this year!  (check your inventory)")
 	end}
 	

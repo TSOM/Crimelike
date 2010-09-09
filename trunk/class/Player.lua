@@ -252,50 +252,6 @@ function _M:getEncumberTitleUpdator(title)
 	end
 end
 
-function _M:playerPickup()
-	-- If 2 or more objects, display a pickup dialog, otehrwise just picks up
-	if game.level.map:getObject(self.x, self.y, 2) then
-		local titleupdator = self:getEncumberTitleUpdator("Pickup")
-		local d d = self:showPickupFloor(titleupdator(), nil, function(o, item)
-			self:pickupFloor(item, true)
-			self:sortInven()
-			self.changed = true
-			d.title = titleupdator()
-			d:used()
-		end)
-	else
-		self:pickupFloor(1, true)
-		self:sortInven()
-		self:useEnergy()
-	self.changed = true
-	end
-end
-
-function _M:playerDrop()
-	local inven = self:getInven(self.INVEN_INVEN)
-	local titleupdator = self:getEncumberTitleUpdator("Drop object")
-	self:showInventory(titleupdator(), inven, nil, function(o, item)
-		self:doDrop(inven, item)
-	end)
-end
-
-function _M:playerWear()
-	local inven = self:getInven(self.INVEN_INVEN)
-	local titleupdator = self:getEncumberTitleUpdator("Wield/wear object")
-	self:showInventory(titleupdator(), inven, function(o)
-		return o:wornInven() and true or false
-	end, function(o, item)
-		self:doWear(inven, item, o)
-	end)
-end
-
-function _M:playerTakeoff()
-	local titleupdator = self:getEncumberTitleUpdator("Take off object")
-	self:showEquipment(titleupdator(), nil, function(o, inven, item)
-		self:doTakeoff(inven, item, o)
-	end)
-end
-
 function _M:playerUseItem(object, item, inven)
 	if game.zone.wilderness then game.logPlayer(self, "You can not use items on the world map.") return end
 
@@ -326,11 +282,12 @@ function _M:playerUseItem(object, item, inven)
 	if object and item then return use_fct(object, inven, item) end
 
 	local titleupdator = self:getEncumberTitleUpdator("Use object")
-	self:showEquipInven(titleupdator(),
+	self:showComplexInv(titleupdator(),
 		function(o)
 			return o:canUseObject()
 		end,
-		use_fct,
+		{use_fct,
+		function() end},
 		true
 	)
 end

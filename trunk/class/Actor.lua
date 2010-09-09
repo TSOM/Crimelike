@@ -17,7 +17,7 @@
 require "engine.class"
 require "engine.Actor"
 require "engine.Autolevel"
-require "engine.interface.ActorInventory"
+require "mod.class.interface.ComplexInventory"
 require "engine.interface.ActorTemporaryEffects"
 require "engine.interface.ActorProject"
 require "engine.interface.ActorLevel"
@@ -36,7 +36,7 @@ local Object = require "mod.class.Object"
 
 module(..., package.seeall, class.inherit(
 	engine.Actor,
-	engine.interface.ActorInventory,
+	mod.class.interface.ComplexInventory,
 	engine.interface.ActorTemporaryEffects,
 	mod.class.interface.ActorLife,
 	engine.interface.ActorProject,
@@ -72,7 +72,7 @@ function _M:init(t, no_default)
     t.talent_cd_reduction = t.talent_cd_reduction or {}
     
 	engine.Actor.init(self, t, no_default)
-	engine.interface.ActorInventory.init(self, t)
+	mod.class.interface.ComplexInventory.init(self, t)
 	engine.interface.ActorTemporaryEffects.init(self, t)
 	mod.class.interface.ActorLife.init(self, t)
 	engine.interface.ActorProject.init(self, t)

@@ -14,12 +14,13 @@
 --
 
 
-local Talents = require "engine.interface.ActorTalents"
+--local Talents = require "engine.interface.ActorTalents"
 
 newEntity{
 	define_as = "ID_BLANK",
 	type = "document", subtype="identification",
 	unided_name = "blankid", id_by_type = true,
+	name = "blankid",
 	display = "i", color=colors.WHITE,
 	encumber = 0.2,
 	stacking = true,
@@ -31,7 +32,7 @@ newEntity{
 	base = "ID_BLANK",
 	define_as = "ID",
 	type = "document", subtype="identification",
-	unided_name = "id", id_by_type = true,
+	name = "id", id_by_type = true,
 	display = "i", color=colors.WHITE,
 	encumber = 0.2,
 	stacking = false,
@@ -39,5 +40,5 @@ newEntity{
 	quality = 100,
 	idsex = 'M',
 	idage = '55',
-	desc = function() return self.idname .. "'s drivers license" end
+	desc = [[John Smith's drivers license]]
 }

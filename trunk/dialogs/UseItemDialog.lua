@@ -76,7 +76,8 @@ function _M:generateList()
 	if self.inven == self.actor.INVEN_INVEN and self.object:wornInven() then list[#list+1] = {name="Wield/Wear", action="wear"} end
 	if self.inven ~= self.actor.INVEN_INVEN and self.object:wornInven() then list[#list+1] = {name="Take off", action="takeoff"} end
 	if self.inven == self.actor.INVEN_INVEN then list[#list+1] = {name="Drop", action="drop"} end
-
+	if self.inven == self.actor.INVEN_INVEN then list[#list+1] = {name="Combine with", action="combine"} end
+	
 	self.max = 0
 	self.maxh = 0
 	for i, v in ipairs(list) do
