@@ -19,4 +19,8 @@ load("/data/general/objects/guns.lua")
 
 -- Utility
 load("/data/general/objects/medicine.lua")
+
+-- Clothing
+load("/data/general/objects/clothing.lua")
 load("/data/general/objects/documents.lua")
+load("/data/general/objects/tools.lua")

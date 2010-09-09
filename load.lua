@@ -21,7 +21,7 @@ local ActorStats = require "engine.interface.ActorStats"
 local ActorResource = require "engine.interface.ActorResource"
 local ActorTalents = require "engine.interface.ActorTalents"
 local ActorAI = require "engine.interface.ActorAI"
-local ActorInventory = require "engine.interface.ActorInventory"
+local ActorInventory = require "mod.class.interface.ComplexInventory"
 local ActorLevel = require "engine.interface.ActorLevel"
 local ActorTemporaryEffects = require "engine.interface.ActorTemporaryEffects"
 local Birther = require "engine.Birther"
@@ -35,15 +35,18 @@ KeyBind:load("move,hotkeys,inventory,actions,debug,moreactions")
 dofile("/mod/resolvers.lua")
 
 -- Body parts
-ActorInventory:defineInventory("MAINHAND", "In main hand", true, "Most weapons are wielded in the main hand.")
-ActorInventory:defineInventory("OFFHAND", "In off hand", true, "You can use shields or a second weapon in your off-hand, if you have the talents for it.")
+ActorInventory:defineInventory("MAINHAND", "In main hand", false, "Most weapons are wielded in the main hand.")
+ActorInventory:defineInventory("OFFHAND", "In off hand", false, "You can use shields or a second weapon in your off-hand, if you have the talents for it.")
 ActorInventory:defineInventory("BODY", "Main armor", true, "Armor protects your from physical attacks. The heavier the armor the more it hinders the use of talents and spells.")
+ActorInventory:defineInventory("BACK", "On back", true, "Generally used for backpacks.")
 ActorInventory:defineInventory("HEAD", "On head", true, "You can wear helmets or crowns on your head")
 ActorInventory:defineInventory("BELT", "Around waist", true, "Belts are worn around your waist.")
 ActorInventory:defineInventory("HANDS", "On hands", true, "Various gloves can be worn on your hands.")
 ActorInventory:defineInventory("FEET", "On feet", true, "Sandals or boots can be worn on your feet.")
 ActorInventory:defineInventory("TOOL", "Tool", true, "This is your readied tool, always available immediately.")
 ActorInventory:defineInventory("AMMO", "Ammo", true, "Your readied ammo.")
+
+ActorInventory:defineInventory("POCKET", "Pockets", false, "Your pockets.")
 
 -- Damage types
 DamageType:loadDefinition("/data/damage_types.lua")
