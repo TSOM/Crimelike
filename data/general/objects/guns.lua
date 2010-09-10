@@ -24,6 +24,7 @@ newEntity{
 	ranged = "gun",
 	volume = 4,
 	body = {AMMO = {1,2}},
+	staticVolume = true,
 	desc = [[Guns are used to shoot bullets.]],
 }
 

@@ -97,6 +97,21 @@ function _M:init(title, actor, filter, actions)
 end
 
 function _M:defineHotkey(id)
+	if self.list[self.sel] and not self.list[self.sel].item then
+		if self.list[self.sel].parentObject then --If one of a continer's inventories is selected
+			if self.list[self.sel].parentObject.inven_def[self.list[self.sel].inven].is_worn then return end --Blocking slots for worn items
+			self.actor.invenPriorities[id] = {object = self.list[self.sel].parentObject, itemInven = self.list[self.sel].inven}
+			self:simplePopup("Priority assigned", self.list[self.sel].parentObject.inven_def[self.list[self.sel].inven].name.." priority set to "..id)
+		else
+			if self.actor.inven_def[self.list[self.sel].inven].is_worn then return end
+			if self.list[self.sel].inven == self.actor.INVEN_FLOOR or self.list[self.sel].inven == self.actor.INVEN_AIR then
+				return
+			end
+			self.actor.invenPriorities[id] = {inven = self.list[self.sel].inven} --If one of the player's inventories is selected 
+			self:simplePopup("Priority assigned", self.actor.inven_def[self.list[self.sel].inven].name.." priority set to "..id)
+		end
+		return
+	end
 	if not self.actor or not self.actor.hotkey then return end
 
 	self.actor.hotkey[id] = {"inventory", self.list[self.sel].object:getName{no_count=true}}
@@ -126,8 +141,14 @@ function _M:generateList()
 			else
 				color = {0x90, 0x90, 0x90}
 			end
-				
-			list[#list+1] = { name=self.actor.inven_def[inven_id].name, color=color, inven=inven_id }
+			
+			local priorityNumber = ""
+			for priority, data in pairs(self.actor.invenPriorities) do
+				if data.inven == inven_id then
+					priorityNumber = priority.." "
+				end
+			end
+			list[#list+1] = { name=priorityNumber..self.actor.inven_def[inven_id].name, color=color, inven=inven_id }
 			for item, o in ipairs(self.actor.inven[inven_id]) do
 				if not self.filter or self.filter(o) then
 					local char = string.char(string.byte('a') + i)
@@ -135,19 +156,24 @@ function _M:generateList()
 					chars[char] = #list
 					i = i + 1
 					if inven_id ~= self.actor.INVEN_AIR then
-						for inven_id =  1, #o.inven_def do
-							if o.inven[inven_id] then
-								if self.actor.inven_def[inven_id].is_worn then
+						for o_inven_id =  1, #o.inven_def do
+							if o.inven[o_inven_id] then
+								if o.inven_def[o_inven_id].is_worn then
 									color = {0x200, 0x60, 0x200}
 								else
 									color = {0x90, 0x30, 0x90}
 								end
-									
-								list[#list+1] = { name="+"..o.inven_def[inven_id].name, color=color, inven=inven_id, parentObject = o }
-								for item, storedO in ipairs(o.inven[inven_id]) do
+								local priorityNumber = ""
+								for priority, data in pairs(self.actor.invenPriorities) do
+									if data.object == o and data.itemInven == o_inven_id then
+										priorityNumber = priority.." "
+									end
+								end
+								list[#list+1] = { name=priorityNumber.."+"..o.inven_def[o_inven_id].name, color=color, inven=o_inven_id, parentObject = o, actorInven = inven_id }
+								for item, storedO in ipairs(o.inven[o_inven_id]) do
 									if not self.filter or self.filter(storedO) then
 										local char = string.char(string.byte('a') + i)
-										list[#list+1] = { name="+"..char..") "..storedO:getDisplayString()..storedO:getName(), color=storedO:getDisplayColor(), object=storedO, inven=inven_id, item=item, parentObject = o }
+										list[#list+1] = { name="+"..char..") "..storedO:getDisplayString()..storedO:getName(), color=storedO:getDisplayColor(), object=storedO, inven=o_inven_id, item=item, parentObject = o, actorInven = inven_id }
 										chars[char] = #list
 										i = i + 1
 									end

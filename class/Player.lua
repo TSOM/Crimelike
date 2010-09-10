@@ -252,6 +252,174 @@ function _M:getEncumberTitleUpdator(title)
 	end
 end
 
+function _M:playerInventory()
+	local d
+	d = self:showComplexInv("Inventory", nil, {function(o, inven, item, parentObject)
+		if inven and inven ~= self.INVEN_FLOOR then
+			if inven == self.INVEN_AIR then return end
+			
+			local air = self:getInven(self.INVEN_AIR)[1]
+			local slot
+			local wearable
+			if parentObject then
+				slot = parentObject:getInven(inven)[item]
+				wearable = parentObject.inven_def[inven].is_worn
+			else
+				slot = self:getInven(inven)[item]
+				wearable = self.inven_def[inven].is_worn
+			end
+			
+			if not air and not slot then return end
+			
+			if not parentObject then --If an item in the player's inventory was selected
+				if not air then
+					if wearable then
+						if self:takeoffObject(inven, item) then
+							if not self:addObject(self.INVEN_AIR, slot) then
+								self:wearObject(slot, false, false, inven)
+							end
+						end
+					elseif self:removeObject(inven, item, true) then
+						if not self:addObject(self.INVEN_AIR, slot) then
+							self:addObject(inven, slot)
+						end
+					end
+				elseif not slot then
+					if wearable then
+						if self:removeObject(self.INVEN_AIR, 1, true) then
+							if not self:wearObject(air, false, false, inven) then
+								self:addObject(self.INVEN_AIR, air)
+							end
+						end
+					elseif self:removeObject(self.inven[self.INVEN_AIR], 1, true) then
+						if not self:addObject(inven, air) then
+							self:addObject(self.INVEN_AIR, air)
+						end
+					end
+				else
+					if wearable then
+						if self:removeObject(self.INVEN_AIR, 1, true) then
+							if self:takeoffObject(inven, item) then
+								if self:wearObject(air, false, false, inven) then
+									self:addObject(self.INVEN_AIR, slot)
+								else
+									self:addObject(self.INVEN_AIR, air)
+									self:wearObject(slot, false, false, inven)
+								end
+							else
+								self:addObject(self.INVEN_AIR, air)
+							end
+						end
+					else
+						if self:removeObject(self.INVEN_AIR, 1, true) then
+							if self:removeObject(inven, item, true) then
+								if self:addObject(inven, air) then
+									self:addObject(self.INVEN_AIR, slot)
+								else
+									self:addObject(self.INVEN_AIR, air)
+									self:addObject(inven, slot)
+								end
+							else
+								self:addObject(self.INVEN_AIR, air)
+							end
+						end
+					end
+				end
+			else --An object within another object was selected
+				if not air then
+					if parentObject:removeObject(inven, item, true) then
+						if not self:addObject(self.INVEN_AIR, slot) then
+							parentObject:addObject(inven, slot)
+						end
+					end
+				elseif not slot then
+					if not parentObject.inven_def[inven].is_worn or parentObject:canWearObject(air, inven, true) then
+						if self:removeObject(self.inven[self.INVEN_AIR], 1, true) then
+							if not parentObject:addObject(inven, air) then
+								self:addObject(self.INVEN_AIR, air)
+							end
+						end
+					end
+				else
+					if not parentObject.inven_def[inven].is_worn or parentObject:canWearObject(air, inven, true) then	
+						if self:removeObject(self.INVEN_AIR, 1, true) then
+							if parentObject:removeObject(inven, item, true) then
+								if parentObject:addObject(inven, air) then
+									self:addObject(self.INVEN_AIR, slot)
+								else
+									self:addObject(self.INVEN_AIR, air)
+									parentObject:addObject(inven, slot)
+								end
+							else
+								self:addObject(self.INVEN_AIR, air)
+							end
+						end
+					end
+				end
+			end
+		elseif inven == self.INVEN_FLOOR then
+			self:dropFloor(self.INVEN_AIR, 1, true, true)
+		elseif item then --An item on the ground was selected
+			if self:getInven(self.INVEN_AIR)[1] then self:dropFloor(self.INVEN_AIR, 1, true, true) end
+			self:pickupFloor(item, true, true, self.INVEN_AIR)
+		end
+		
+		self.changed = true
+	end,
+	function() --If the player closes the screen with an item in the air, drop it.
+		if self:getInven(self.INVEN_AIR)[1] then  self:dropFloor(self.INVEN_AIR, 1, true, true) end
+	end})
+end
+
+function _M:playerPickup()
+	local attemptPickup = function(item)
+		for priority, data in pairs(self.invenPriorities) do
+			if data.inven then
+				self:pickupFloor(item, false, true, data.inven)
+			elseif data.object then
+				for inven_id, inven in pairs(self.inven) do
+					for items, object in pairs(inven) do
+						if object == data.object then
+							self:pickupFloor(item, false, true, data.itemInven, object)
+						end
+					end
+				end
+			end
+			if game.level.map:getObject(self.x, self.y, item) ~= o then
+				break
+			end
+		end
+	end
+	-- If 2 or more objects, display a pickup dialog, otehrwise just picks up
+	if game.level.map:getObject(self.x, self.y, 2) then
+		local titleupdator = self:getEncumberTitleUpdator("Pickup")
+		local d d = self:showPickupFloor(titleupdator(), nil, function(o, item)
+			attemptPickup(item)
+			if game.level.map:getObject(self.x, self.y, item) ~= o then 
+				game.logSeen(self, "%s picks up: %s.", self.name:capitalize(), o:getName{do_color=true})
+			else 
+				game:unregisterDialog(d)
+				self:pickupFloor(item, true, true, self.INVEN_AIR)
+				self:playerInventory()
+			end
+			self.changed = true
+			d.title = titleupdator()
+			d:used()
+		end)
+	else
+		o = game.level.map:getObject(self.x, self.y, 1)
+		attemptPickup(1)
+		if game.level.map:getObject(self.x, self.y, 1) ~= o then 
+			game.logSeen(self, "%s picks up: %s.", self.name:capitalize(), o:getName{do_color=true})
+		else
+			self:pickupFloor(1, true, true, self.INVEN_AIR)
+			self:playerInventory()
+		end
+		self:useEnergy()
+	self.changed = true
+	end
+end
+
 function _M:playerUseItem(object, item, inven)
 	if game.zone.wilderness then game.logPlayer(self, "You can not use items on the world map.") return end
 
