@@ -16,6 +16,7 @@
 require "engine.class"
 local Map = require "engine.Map"
 local ShowComplexInv = require "mod.dialogs.ComplexInv"
+local ShowPickupFloor = require "engine.dialogs.ShowPickupFloor"
 
 --- Handles actors stats
 module(..., package.seeall, class.make)
@@ -48,6 +49,7 @@ _M:defineInventory("FLOOR", "On floor", false, "On the floor")
 --- Initialises inventories with default values if needed
 function _M:init(t)
 	self.inven = t.inven or {}
+	self.invenPriorities = {} --Stores inven or object and itemInven 
 	self:initBody()
 end
 
@@ -82,14 +84,14 @@ function _M:addObject(inven_id, o)
 	end
 	
 	-- No room ?
-	local totalVolume = o.volume
+	local totalVolume = o:getVolume()
 	for i, item in ipairs(inven) do
-		totalVolume = totalVolume + item.volume 
+		totalVolume = totalVolume + item:getVolume()
 	end
 	
 	if totalVolume > inven.maxVolume then return false end
 	
-	if #inven >= inven.max then return false end
+	if #inven >= inven.max and inven.max ~= -1 then return false end
 
 	if o:check("on_preaddobject", self, inven) then return false end
 
@@ -121,11 +123,12 @@ function _M:itemPosition(inven, o)
 end
 
 --- Picks an object from the floor
-function _M:pickupFloor(i, vocal, no_sort, inven) --Inven control which slot the item is put into
+function _M:pickupFloor(i, vocal, no_sort, inven, container) --Inven controls which slot the item is put into, and container controls which object the item is put into (this can be nil)
 	local o = game.level.map:getObject(self.x, self.y, i)
+	container = container or self
 	if o then
 		local prepickup = o:check("on_prepickup", self, i)
-		if not prepickup and self:addObject(inven or self.INVEN_INVEN, o) then
+		if not prepickup and container:addObject(inven or container.INVEN_INVEN, o) then
 			game.level.map:removeObject(self.x, self.y, i)
 			if not no_sort then self:sortInven(self.INVEN_INVEN) end
 
@@ -218,25 +221,6 @@ end
 -- @param action a function called when an object is selected
 function _M:showComplexInv(title, filter, action, allow_keybind)
 	local d = ShowComplexInv.new(title, self, filter, action, allow_keybind and self)
-	game:registerDialog(d)
-	return d
-end
-
---- Show inventory dialog
--- @param inven the inventory (from self:getInven())
--- @param filter nil or a function that filters the objects to list
--- @param action a function called when an object is selected
-function _M:showInventory(title, inven, filter, action, allow_keybind)
-	local d = ShowInventory.new(title, inven, filter, action, allow_keybind and self)
-	game:registerDialog(d)
-	return d
-end
-
---- Show equipment dialog
--- @param filter nil or a function that filters the objects to list
--- @param action a function called when an object is selected
-function _M:showEquipment(title, filter, action, allow_keybind)
-	local d = ShowEquipment.new(title, self, filter, action, allow_keybind and self)
 	game:registerDialog(d)
 	return d
 end
@@ -426,4 +410,31 @@ function _M:findInAllInventories(name, getname)
 		local o, item = self:findInInventory(inven, name, getname)
 		if o and item then return o, item, inven_id end
 	end
+end
+
+function _M:getEncumbrance()
+	-- Compute encumbrance
+	local enc = 0
+	for inven_id, inven in pairs(self.inven) do
+		for item, o in ipairs(inven) do
+			o:forAllStack(function(so) enc = enc + so:getEncumbrance() end)
+		end
+	end
+	enc = enc + (self.encumber or 0)
+--	print("Total encumbrance", enc)
+	return enc
+end
+
+function _M:getVolume()
+	-- Compute volume
+	local vol = 0
+	if not self.staticVolume then
+		for inven_id, inven in pairs(self.inven) do
+			for item, o in ipairs(inven) do
+				o:forAllStack(function(so) vol = vol + so:getVolume() end)
+			end
+		end
+	end
+	vol = vol + (self.volume or 0)
+	return vol
 end

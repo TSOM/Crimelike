@@ -13,47 +13,35 @@
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 --
 
-
 newEntity{
-	define_as = "BASE_COAT",
-	slot = "BODY",
-	type = "clothing", subtype="coat",
-	display = "[", color=colors.UMBER,
+	define_as = "BASE_BACKPACK",
+	slot = "BACK",
+	type = "container", subtype="backpack",
+	display = "]", color=colors.YELLOW,
 	encumber = 1,
 	rarity = 1,
 	volume = 10,
-	name = "a generic coat",
-	body = {POCKET = {-1,10}},
-	desc = [[A generic coat.]],
+	name = "a generic backpack",
+	body = {INVEN = {-1,50}},
+	desc = [[A generic backpack.]],
 }
 
-newEntity{ base = "BASE_COAT",
-	name = "leather coat",
-	level_range = {1, 10},
-	cost = 10,
-}
-
-newEntity{ base = "BASE_COAT",
-	name = "raincoat",
-	color=colors.BLUE,
+newEntity{ base = "BASE_BACKPACK",
+	name = "backpack",
 	level_range = {1, 10},
 	cost = 10,
 }
 
 newEntity{
-	define_as = "BASE_HAT",
-	slot = "HEAD",
-	type = "clothing", subtype="hat",
-	display = "[", color=colors.RED,
-	encumber = 1,
-	rarity = 1,
-	volume = 5,
-	name = "a generic hat",
-	desc = [[A generic hat.]],
-}
-
-newEntity{ base = "BASE_HAT",
-	name = "fedora",
+	define_as = "BRIEFCASE",
+	type = "container", subtype="briefcase",
+	display = "]", color=colors.DARK_SLATE_GRAY,
 	level_range = {1, 10},
-	cost = 10,
+	rarity = 1,
+	encumber = 3,
+	volume = 7,
+	body = {INVEN = {-1,6}}, --An infinite number of items can be stored, as long as the total volume is 6 or less
+	staticVolume = true, --The volume is not affected by the contents
+	name = "briefcase",
+	desc = [[A briefcase, popular among businesspeople and spies.]],
 }

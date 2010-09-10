@@ -423,18 +423,6 @@ function _M:getMaxEncumbrance()
 	return math.floor(40 + self:getStr() * 1.8) + (self.max_encumber or 0)
 end
 
-function _M:getEncumbrance()
-	-- Compute encumbrance
-	local enc = 0
-	for inven_id, inven in pairs(self.inven) do
-		for item, o in ipairs(inven) do
-			o:forAllStack(function(so) enc = enc + so.encumber end)
-		end
-	end
---	print("Total encumbrance", enc)
-	return enc
-end
-
 function _M:checkEncumbrance()
 	-- Compute encumbrance
 	local enc, max = self:getEncumbrance(), self:getMaxEncumbrance()
