@@ -80,9 +80,112 @@ newEntity{ base = "BASE_GUN",
 	cost = 5,
 	rarity = 4,
 	material_level = 1,
-	desc = [[A large, stainless steel revolver that is somewhat unwieldy, but carries heavy power. ]],
+	desc = [[A large, stainless steel revolver that is somewhat unwieldy, but carries heavy power.]],
 	combat = {
 		range = 8,
+		physspeed = 0.8,
+		dammod = {agi=0.7},
+	},
+}
+
+newEntity{ base = "BASE_GUN",
+	name = "Desert Eagle", image = "tiles/equipment/deserteagle.png",
+	level_range = {1, 10},
+	require = { stat = { str=10 }, },
+	cost = 5,
+	rarity = 4,
+	material_level = 1,
+	desc = [[A notably large, well-known gas-operated pistol.]],
+	combat = {
+		range = 8,
+		physspeed = 0.8,
+		dammod = {agi=0.7},
+	},
+}
+
+newEntity{
+	define_as = "BASE_RIFLE",
+	slot = "MAINHAND",
+	type = "weapon", subtype="rifle",
+	display = "}", color=colors.UMBER,
+	encumber = 5,
+	combat = { damrange = 1.4,},
+	ranged = "gun",
+	volume = 4,
+	body = {AMMO = {1,2}},
+	staticVolume = true,
+	desc = [[Guns are used to shoot bullets.]],
+}
+
+newEntity{
+	define_as = "BASE_SHOTGUN",
+	slot = "MAINHAND",
+	type = "weapon", subtype="shotgun",
+	display = "}", color=colors.UMBER,
+	encumber = 5,
+	combat = { damrange = 1.4,},
+	ranged = "gun",
+	volume = 4,
+	body = {AMMO = {1,2}},
+	staticVolume = true,
+	desc = [[Guns are used to shoot bullets.]],
+}
+
+newEntity{ base = "BASE_SHOTGUN",
+	name = "Double-barrel Shotgun", image = "tiles/equipment/doublebarrelshotgun.png",
+	level_range = {1, 10},
+	require = { stat = { str=10 }, },
+	cost = 5,
+	rarity = 4,
+	material_level = 1,
+	desc = [[A long shotgun with two barrels. It is powerful and has a reasonable range, but can only hold two shells.]],
+	combat = {
+		range = 3,
+		physspeed = 0.8,
+		dammod = {agi=0.7},
+	},
+}
+
+newEntity{ base = "BASE_RIFLE",
+	name = ".22 Hunting Rifle", image = "tiles/equipment/.22huntingrifle.png",
+	level_range = {1, 10},
+	require = { stat = { str=10 }, },
+	cost = 5,
+	rarity = 4,
+	material_level = 1,
+	desc = [[An accurate rifle used for hunting.]],
+	combat = {
+		range = 3,
+		physspeed = 0.8,
+		dammod = {agi=0.7},
+	},
+}
+
+newEntity{ base = "BASE_RIFLE",
+	name = "FAMAS", image = "tiles/equipment/famas.png",
+	level_range = {1, 10},
+	require = { stat = { str=10 }, },
+	cost = 5,
+	rarity = 4,
+	material_level = 1,
+	desc = [[A bullpup-style assault rifle. Fires at 900 rounds per minute, though its effective range is less than that of other carbines.]],
+	combat = {
+		range = 3,
+		physspeed = 0.8,
+		dammod = {agi=0.7},
+	},
+}
+
+newEntity{ base = "BASE_RIFLE",
+	name = "CZ 550", image = "tiles/equipment/cz550.png",
+	level_range = {1, 10},
+	require = { stat = { str=10 }, },
+	cost = 5,
+	rarity = 4,
+	material_level = 1,
+	desc = [[A very, very high caliber hunting rifle, to be used against very big game.]],
+	combat = {
+		range = 3,
 		physspeed = 0.8,
 		dammod = {agi=0.7},
 	},
