@@ -82,7 +82,7 @@ function _M:run()
 
 	self.hotkeys_display.actor = self.player
 	self.npcs_display.actor = self.player
-	
+
 	-- Setup the targetting system
 	engine.interface.GameTargeting.init(self)
 
@@ -107,10 +107,10 @@ function _M:newGame()
 		print("[PLAYER BIRTH] resolved!")
 		--self.player:grantQuest(self.player.starting_quest)
 		--self:registerDialog(require("mod.dialogs.IntroDialog").new(self.player))
-		
+
 	end)
 	self:registerDialog(birth,self:registerDialog(require("mod.dialogs.LevelupStatsDialog").new(self.player)))
-	
+
 end
 
 function _M:loaded()
@@ -305,7 +305,7 @@ function _M:display()
 
 	-- Tooltip is displayed over all else
 	self:targetDisplayTooltip(game.w, game.h)
-	
+
 	if self.player then self.player.changed = false end
 	engine.GameTurnBased.display(self)
 end
@@ -440,19 +440,19 @@ function _M:setupCommands()
 
 		SHOW_CHARACTER_SHEET = function()
 			self:registerDialog(require("mod.dialogs.CharacterSheet").new(self.player))
-			
+
 		end,
 
 		-- Exit the game
 		QUIT_GAME = function()
 			self:onQuit()
 		end,
-		
+
 		-- Lua console
 		LUA_CONSOLE = function()
 			self:registerDialog(DebugConsole.new())
 		end,
-		
+
 		EXIT = function()
 			local menu menu = require("engine.dialogs.GameMenu").new{
 				"resume",
@@ -476,24 +476,24 @@ function _M:setupCommands()
 
 		LOOK_AROUND = function()
 			self.flash:empty(true)
-			self.flash(self.flash.GOOD, "Looking around... (direction keys to select interresting things, shift+direction keys to move freely)")
+			self.flash(self.flash.GOOD, "Looking around... (direction keys to select interesting things, shift+direction keys to move pointer freely)")
 			local co = coroutine.create(function() self.player:getTarget{type="hit", no_restrict=true, range=2000} end)
 			local ok, err = coroutine.resume(co)
 			if not ok and err then print(debug.traceback(co)) error(err) end
 		end,
-		
+
 		PICKUP_FLOOR = function()
 			self.player:playerPickup()
 		end,
-		
+
 		DROP_FLOOR = "SHOW_INVENTORY",
-		
+
 		SHOW_INVENTORY = function()
 			self.player:playerInventory()
 		end,
-		
+
 		SHOW_EQUIPMENT = "SHOW_INVENTORY",
-		
+
 		WEAR_ITEM = "SHOW_INVENTORY",
 
 		TAKEOFF_ITEM = "SHOW_INVENTORY",
@@ -539,7 +539,7 @@ function _M:setupCommands()
 		game.player:addObject(game.player.INVEN_INVEN, id)
 		game.log("Easter came early this year!  (check your inventory)")
 	end}
-	
+
 	self.key:setCurrent()
 end
 
