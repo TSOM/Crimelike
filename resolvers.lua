@@ -37,7 +37,7 @@ function resolvers.calc.equip(t, e)
 			if filter.autoreq and rawget(o, "require") and rawget(o, "require").stat then
 				print("Autorequire stats")
 				for s, v in pairs(rawget(o, "require").stat) do
-					print(s,v)
+					--print(s,v)
 					if e:getStat(s) < v then
 						e.unused_stats = e.unused_stats - (v - e:getStat(s))
 						e:incStat(s, v - e:getStat(s))

@@ -45,7 +45,6 @@ local r,g,b = 0
 
 	g= attr / max * maxcolor
 	r = maxcolor - g
-print(r .. " " .. g)
 return r,g,b
 end
 
