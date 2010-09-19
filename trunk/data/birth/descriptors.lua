@@ -103,6 +103,24 @@ newBirthDescriptor{
 		starting_zone = "slums",
 	},
 }
+
+newBirthDescriptor{
+	type = "location",
+	name = "The City",
+	desc = {
+		"City Generation Test.",
+	},
+	copy = {
+		unused_talents = 50,
+		unused_generics = 50,
+		starting_level = 1,
+		starting_zone = "city",
+		resolvers.equip{ id=true,
+			{type="weapon", subtype="pistol", autoreq=true},
+			{type="ammo", subtype="clip", autoreq=true},
+		},
+	}}
+	
 newBirthDescriptor{
 	type = "location",
 	name = "Test Land",

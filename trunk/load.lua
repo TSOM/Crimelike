@@ -15,6 +15,7 @@
 
 
 -- This file loads the game module, and loads data
+dofile("/mod/util.lua")
 local KeyBind = require "engine.KeyBind"
 local DamageType = require "engine.DamageType"
 local ActorStats = require "engine.interface.ActorStats"
@@ -27,7 +28,8 @@ local ActorTemporaryEffects = require "engine.interface.ActorTemporaryEffects"
 local Birther = require "engine.Birther"
 local Faction = require "engine.Faction"
 local Quest = require "engine.Quest"
-
+print('Penis')
+PrintTable(fs.list("/data/"))
 -- Usefull keybinds
 KeyBind:load("move,hotkeys,inventory,actions,debug,moreactions")
 
