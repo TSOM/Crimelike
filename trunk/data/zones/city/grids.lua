@@ -122,7 +122,7 @@ newEntity{
 
 newEntity{
 	define_as = 'WALL',
-	name = 'wall', 
+	name = 'wall',
 	always_remember = true,
 	does_block_move = true,
 	block_sight = true,
@@ -196,6 +196,18 @@ newEntity{
 newEntity{
 	define_as = 'FLOOR_WOOD_ONE',
 	name = 'wood floor', image = 'tiles/terrain/floors/woodfloor.png',
+	display = ' ', color_br=250, color_bg=250, color_bb=250
+}
+
+newEntity{
+	define_as = 'FLOOR_WOOD_TWO',
+	name = 'wood floor', image = 'tiles/terrain/floors/woodfloor2.png',
+	display = ' ', color_br=250, color_bg=250, color_bb=250
+}
+
+newEntity{
+	define_as = 'FLOOR_CHECKERBOARD',
+	name = 'wood floor', image = 'tiles/terrain/floors/checkfloor.png',
 	display = ' ', color_br=250, color_bg=250, color_bb=250
 }
 
