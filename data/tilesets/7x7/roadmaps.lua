@@ -222,6 +222,6 @@ end
 		end
 	end
 for k,v in ipairs(city_map) do
-print(''string.Implode(v))
+print('', string.Implode(v))
 end
 end

@@ -147,7 +147,7 @@ newEntity{
 }
 
 newEntity{
-	define_as = "BASE_SUBMACHINEGUN"
+	define_as = "BASE_SUBMACHINEGUN",
 	slot = "MAINHAND",
 	type = "weapon", subtype="submachine gun",
 	display = "}", color=colors.UMBER,
@@ -386,7 +386,7 @@ newEntity{ base = "BASE_RIFLE",
 }
 
 newEntity{
-	define_as = "BASE_SNIPER"
+	define_as = "BASE_SNIPER",
 	slot = "MAINHAND",
 	type = "weapon", subtype="sniper rifle",
 	display = "}", color=colors.UMBER,

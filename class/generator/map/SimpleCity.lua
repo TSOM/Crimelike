@@ -137,12 +137,13 @@ local col = 2
 	
 		if city_map[row][col] == '*' then
 		
+			--If right is street, and down is street and top left not plot and top right not plot then
 			if city_map[row][col + 1] == '*' and city_map[row + 1][col] == '*' and city_map[row - 1][col - 1] ~= 'X' and city_map[row - 1][col + 1] ~= 'X'then
 			
 			local availh = maxh - row
 			local availw = maxw - col
 			
-				for i = 1, maxPlotSize do
+				for i = 1, maxPlotSize * 2 do
 					--Can probably do this check before this for loop
 					if col + i == maxw then
 						if i < availw then
@@ -160,7 +161,7 @@ local col = 2
 					end
 				end
 				
-				for i = 1, maxPlotSize do
+				for i = 1, maxPlotSize * 2 do
 				
 					if row + i == maxh then
 						if i < availh then
@@ -192,7 +193,10 @@ local col = 2
 				end
 			
 				col = col + plotw
-				
+					print('CITY')
+					for k,v in ipairs(city_map) do
+					print(string.Implode('',v))
+					end
 				
 			end
 		
@@ -276,7 +280,7 @@ local col = 2
 	local curploth = 1
 	
 		if city_map[row][col] == 'X' then
-			for i = 1, maxPlotSize do
+			for i = 1, maxPlotSize * 2 do
 			
 			--city_map[row][col + i - 1] = 'Y'
 			
@@ -287,7 +291,7 @@ local col = 2
 				end
 			end
 			
-			for i = 1, maxPlotSize do
+			for i = 1, maxPlotSize * 2 do
 				--city_map[row + i - 1][col] = 'Y'
 				if city_map[row +i][col] ~= 'X' then
 				curploth = i
@@ -398,10 +402,11 @@ ts[n] = string.Explode("",ts[n])
 
 end]]
 
-local t = table.Copy(ts)
+t = table.Copy(ts)
 
 --All rotations are negative
 		--90 degrees
+		
 		if rotationnum == 1 then
 			
 			local mx, my = #ts[1], #ts
@@ -432,8 +437,10 @@ local t = table.Copy(ts)
 				t[i][j] = ts[rj][i]
 			end end
 		end
-		--[[X Symetric
+
+		--X Symetric
 		if math.random() < 0.5 then
+		ts = nil
 		ts = table.Copy(t)
 			local mx, my = #ts, #ts[1]
 			for j = 1, my do for ri = 1, mx do
@@ -441,10 +448,10 @@ local t = table.Copy(ts)
 				t[i] = t[i] or {}
 				t[i][j] = ts[ri][j]
 			end end
-		end
-		
+
 		-- Y symetric tile definition
-		if math.random() < 0.5 then
+		elseif math.random() < 0.5 then
+		ts = nil
 		ts = table.Copy(t)
 			local mx, my = #ts, #ts[1]
 			for rj = 1, my do for i = 1, mx do
@@ -452,7 +459,7 @@ local t = table.Copy(ts)
 				t[i] = t[i] or {}
 				t[i][j] = ts[i][rj]
 			end end
-		end]]
+		end
 --[[for k,v in ipairs (t) do
 print(string.Implode("",v))
 end]]
@@ -490,35 +497,41 @@ function _M:chooseTileBlock(row, col, curplotw, curploth)
 
 local dirName
 
-	if curploth < curplotw then
+	if curploth > curplotw then
 	dirName = curploth .. 'x' .. curplotw
 	else
 	dirName = curplotw .. 'x' .. curploth
 	end
 local chosenplot = nil
-	if table.HasValue(fs.list("/mod/data/plots/"),dirName) then
-	local availplots = fs.list("/mod/data/plots/" .. dirName)
-	if availplots[1] == ".svn" then table.remove(availplots[1]) end
-		while chosenplot == nil do
-			for k,v in pairs (availplots) do
-				if math.random(#availplots) == 1 then
-				chosenplot = v
-				print(chosenplot)
-				self:createTile(self:determineRotation(dirName .. "/" .. chosenplot, curplotw,curploth),row,col)
-				break
+	--while chosenplot == nil do
+		if table.HasValue(fs.list("/mod/data/plots/"),dirName) then
+		local availplots = fs.list("/mod/data/plots/" .. dirName)
+			
+			if availplots[1] == ".svn" then 
+			table.remove(availplots, 1)
+			end
+		
+			while chosenplot == nil do
+				for k,v in pairs (availplots) do
+					if math.random(#availplots) == 1 then
+					chosenplot = v
+					print(chosenplot)
+					self:createTile(self:determineRotation(dirName .. "/" .. chosenplot, curplotw,curploth),row,col)
+					break
+					end
 				end
 			end
-		end
 
-	else
-	print("No plots with dimension " .. curplotw .. "x" .. curploth)
-		for j = 1, curploth * self.blockScale do
-			for i = 1, curplotw * self.blockScale do
-			self.map((row - 1)*self.blockScale - 1 + j,(col - 1)*self.blockScale - 1 + i, Map.TERRAIN, self.grid_list['FLOOR'])
+		else
+		print("No plots with dimension " .. curplotw .. "x" .. curploth)
+			for j = 1, curploth * self.blockScale do
+				for i = 1, curplotw * self.blockScale do
+				self.map((row - 1)*self.blockScale - 1 + j,(col - 1)*self.blockScale - 1 + i, Map.TERRAIN, self.grid_list['FLOOR'])
+				end
+				
 			end
-			
 		end
-	end
+	--end
 
 end
 
