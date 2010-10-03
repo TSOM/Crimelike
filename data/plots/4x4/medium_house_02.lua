@@ -3,14 +3,14 @@
 --4x4
 defineTile('p', 'PAVEMENT')
 defineTile('#', 'WALL_BRICK_DARK')
-defineTile('=', 'COUNTER_WOODEN_RED')
+defineTile('=', 'COUNTER_WOOD_RED')
 defineTile(',', 'FLOOR_WOOD_TWO')
-defineTile('+', 'KITCHEN_SINK_RED')
-defineTile('D', 'DOOR_BRICK_DARK')
+defineTile('+', 'SINK')
+defineTile('D', 'WALL_BRICK_DARK_DOOR')
 defineTile('O', 'WINDOW_BRICK_DARK')
-defineTile('W', 'TOILET')
+defineTile('W', 'WC')
 defineTile('~', 'GRASS_DARK')
-defineTile('N', 'BASIN_WOODEN_RED')
+defineTile('N', 'WHB')
 defineTile('H', 'SHOWER')
 defineTile('C', 'CHAIR_WOODEN')
 defineTile('T', 'TABLE_WOODEN')
@@ -53,19 +53,3 @@ return{
 [[~~~~~~~ppppppp~]]}
 
 --Level One:
-
---return{
---[[]],
---[[]],
---[[]],
---[[]],
---[[   #O#   #O#]],
---[[ ###,##O##,###]],
---[[ #t,,,#,#,,,t#]],
---[[ O,,,,D,D,,,,O]],
---[[ #/,BB#,#BB,/#]],
---[[ ######,######]],
---[[ #t,,,,,,,>#]],
---[[ O,,,,,,####]],
---[[ #/,u,,v#]],
---[[ ##O##O##]]}
