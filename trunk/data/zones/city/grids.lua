@@ -232,14 +232,14 @@ newEntity{
 
 newEntity{
    base = 'WALL',
-   define_as = 'WALL_PLANK_DARK',
+   define_as = 'WALL_DARK_PLANK',
    name = 'plank wall', image = 'tiles/terrain/walls/wall_dark_plank.png',
    tooltip = 'A shaky wooden plank wall.'
 }
 
 newEntity{
    base = 'WINDOW',
-   define_as = 'WINDOW_PLANK_DARK',
+   define_as = 'WINDOW_DARK_PLANK',
    name = 'plank window', image = 'tiles/terrain/windows/window_dark_plank.png',
    tooltip = 'A dodgy wooden plank window.'
 }
@@ -702,14 +702,14 @@ newEntity{
 newEntity{
    base = 'FENCE',
    define_as = 'FENCE_IRON',
-   --image = 'tiles/terrain/walls/fence_iron.png',
+   image = 'tiles/terrain/walls/fence_iron.png',
    tooltip = 'Iron railings.'
 }
 
 newEntity{
    --base = 'DOOR',
    define_as = 'GATE_IRON',
-   --image = 'tiles/terrain/doors/gate_iron.png',
+   image = 'tiles/terrain/doors/gate_iron.png',
    display = '+', color_r=199, color_g=199, color_b=210,
    block_sight = false,
    tooltip = 'An iron gate.'
@@ -945,4 +945,83 @@ newEntity{
 	name = 'rough cobblestone floor',
 	display = ':',
 	image = 'tiles/terrain/floors/cobble_floor.png'
+}
+
+newEntity{
+   base = 'WALL',
+   define_as = 'WALL_DRY',
+   name = 'drywall', image = 'tiles/terrain/walls/plasterwoodwall.png',
+   tooltip = 'A plaster wall.'
+}
+
+newEntity{
+   base = 'WALL',
+   define_as = 'WALL_DRY_DIRTY',
+   name = 'old drywall', image = 'tiles/terrain/walls/plasteroldwoodwall.png',
+   tooltip = 'A dirty plaster wall.'
+}
+
+newEntity{
+   base = 'WALL',
+   define_as = 'WALL_DRY_DIRTY_CRACK',
+   name = 'cracked dirty drywall', image = 'tiles/terrain/walls/plasteroldwoodcrackedwa.png',
+   tooltip = 'A cracked dirty plaster wall.'
+}
+
+newEntity{
+   base = 'WALL',
+   define_as = 'WALL_DRY_DIRTY_BROKEN',
+   name = 'broken dirty drywall', image = 'tiles/terrain/walls/plasteroldbrokenwoodwal.png',
+   tooltip = 'A broken dirty plaster wall.'
+}
+
+newEntity{
+   base = 'WALL',
+   define_as = 'WALL_CORRUGATED_SMALL',
+   name = 'corrugated wall 1', image = 'tiles/terrain/walls/corrugated1.png',
+   tooltip = 'corrugated metal wall.'
+}
+
+newEntity{
+   base = 'WALL',
+   define_as = 'WALL_CORRUGATED_LARGE',
+   name = 'corrugated wall 2', image = 'tiles/terrain/walls/corrugated2.png',
+   tooltip = 'corrugated metal wall.'
+}
+
+newEntity{
+   base = 'WALL',
+   define_as = 'WALL_SLATTED',
+   name = 'slatted wooden wall', image = 'tiles/terrain/walls/wall_slatted.png',
+   tooltip = 'A slatted wall.'
+}
+
+newEntity{
+   base = 'WALL',
+   define_as = 'WALL_ROUGH_BRICK',
+   name = 'roguh brick wall', image = 'tiles/terrain/walls/wall_rough_brick.png',
+   tooltip = 'A rough brick wall.'
+}
+
+newEntity{
+   base = 'WALL',
+   define_as = 'WALL_COLUMN',
+   name = 'column wall', image = 'tiles/terrain/walls/column_wall.png',
+   tooltip = 'A column.'
+}
+
+newEntity{
+   base = 'WALL',
+   define_as = 'WALL_HALF_BRICK',
+   name = 'plaster brick wall', image = 'tiles/terrain/walls/half_brick.png',
+   tooltip = 'Brick / plaster wall.'
+}
+
+newEntity{
+   define_as = 'STATUE',
+   image = 'tiles/terrain/misc/statue.png',
+   display = '&', color_r=199, color_g=199, color_b=210,
+   block_sight = false,
+   does_block_move = false,
+   tooltip = 'A statue.'
 }
