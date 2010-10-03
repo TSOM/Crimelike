@@ -1,21 +1,17 @@
---Luxury House number 1
+--Park with shack
 --AUTHOR: MENDONCA
 --30 x 15 plot
 
 defineTile('p', 'PAVEMENT')
-defineTile('#', 'WALL_DRY')
-defineTile('8', 'WALL_BRICK_DARK')
+defineTile('8', 'WALL_DARK_PLANK')
 defineTile('=', 'COUNTER_WOOD_RED')
-defineTile(':', 'FLOOR_WOOD_TWO')
-defineTile('c', 'CONCRETE_FLOOR')
-defineTile(';', 'FLOOR_CHECKERBOARD')
-defineTile(',', 'FLOOR_BIGCHECK_GREEN')
-defineTile('+', 'SINK')
-defineTile('D', 'WALL_BRICK_DARK_DOOR')
-defineTile('D', 'DOOR_WOOD_DOUBLE')
-defineTile('O', 'WINDOW_BRICK_DARK')
+defineTile('w', 'FLOOR_WOOD_TWO')
+defineTile('c', 'FLOOR_CLAY_BRICK_ONE')
+defineTile('S', 'STATUE')
+defineTile('d', 'DOOR_DARK_PLANK')
+defineTile('O', 'WINDOW_DARK_PLANK')
 defineTile('W', 'WC')
-defineTile('~', 'DARK_GRASS_ONE')
+defineTile('~', 'GRASS_ONE')
 defineTile('N', 'WHB')
 defineTile('H', 'SHOWER')
 defineTile('C', 'CHAIR_WOODEN')
@@ -40,22 +36,24 @@ defineTile('u', 'DESK_WOODEN')
 defineTile('-', 'FENCE_IRON')
 defineTile('t', 'LAMP_STANDARD')
 defineTile('v', 'PLANTPOT_FIXED')
+defineTile('g', 'GATE_IRON')
+defineTile('K', 'POOL_TABLE_E')
+defineTile('k', 'POOL_TABLE_W')
 defineTile('M', 'HIFI')
-defineTile('?', 'CASH_REGISTER')
 
 return{
-[[ppppppppppppppp]],
-[[p8888888888888p]],
-[[p8=*=*=;;;dccDp]],
-[[pO;;;;;;;;#%%8p]],
-[[p8F;;;F#d####8p]],
-[[pOT;;;T#:d,,,Op]],
-[[p8;;;;;#:#d#d8p]],
-[[p8#==###:#N#N8p]],
-[[p8v::cTc:#W#W8p]],
-[[pO:::::::####8p]],
-[[pOcTc:cTc::::8p]],
-[[pO:::::::::?=8p]],
-[[p8cTc:cTc::::8p]],
-[[p88OOOOOO8DD88p]],
-[[ppppppppppppppp]]}
+[[pppppppppppppppppppppppppppppp]],
+[[p~~~~~~~~~~~c~~~~~~~~~~~~~~~~p]],
+[[p~~~~~~~~~~~c~~~~~~~~S~~~~~~~p]],
+[[p~~~~~S~~~~~cccccccc~~~~~~~~~p]],
+[[p~~~~~~~~~~~~~~~~~~c~~~ccccccp]],
+[[p~~~~~~~~~~~~~~~~~~c~~~c~~~~~p]],
+[[pcccccccc~~~~~~~~~~c~~~c~~~~~p]],
+[[p~~~~~~~c~~~~~~ccccccccc~~~~~p]],
+[[p~~~~~~~c~~~~~~c~~88O88~~~~~~p]],
+[[p~~~~~~~cccccccc~~dwwC8~~~~~~p]],
+[[p~~~~~~~~~~~c~~~~~8wwTO~S~~~~p]],
+[[p~~~S~~~~~~~cccccc8www8~~~~~~p]],
+[[p~~~~~~~~~~~~~~~~c88O88~~~~~~p]],
+[[p~~~~~~~~~~~~~~~~c~~~~~~~~~~~p]],
+[[pppppppppppppppppppppppppppppp]]}
