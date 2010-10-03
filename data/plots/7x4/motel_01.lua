@@ -27,7 +27,7 @@ defineTile('e', 'BED_WOODEN_S')
 defineTile('/', 'SHELF_WOOD')
 defineTile('%', 'SHELF_METAL')
 defineTile('x', 'TELEVISION')
-defineTiel('X', 'TELEVISION')
+defineTile('X', 'TELEVISION')
 defineTile('F', 'FRIDGE')
 defineTile('u', 'DESK_WOODEN')
 
