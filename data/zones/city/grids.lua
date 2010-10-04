@@ -88,7 +88,7 @@ newEntity{
 
 newEntity{
    define_as = 'WINDOW',
-   name = 'window', --image = 'tiles/terrain/window1.png',
+   name = 'window', --image = 'tiles/terrain/windows/window1.png',
    display = 'O', color_r=182, color_g=215, color_b=125,
    color_br=235, color_bg=126, color_bb=37,
    notice = true,
@@ -171,7 +171,7 @@ newEntity{
 	define_as = 'DOOR_WOOD_DOUBLE',
 	display = 'O',
 	image = 'tiles/terrain/doors/wooden_double.png',
-	tint_r = 1.5, tint_g = 0.5, tint_b = 0.5
+	--tint_r = 1.5, tint_g = 0.5, tint_b = 0.5
 
 }
 
@@ -246,7 +246,7 @@ newEntity{
 
 newEntity{
    --base = 'DOOR',
-   define_as = 'DOOR_PLANK_DARK',
+   define_as = 'DOOR_DARK_PLANK',
    name = 'plank door', image = 'tiles/terrain/doors/door_dark_plank.png',
    tooltip = 'A poorly constructed wooden plank door.'
 }
@@ -254,7 +254,7 @@ newEntity{
 newEntity{
    --base = 'DOOR',
    define_as = 'DOOR_GARAGE',
-   name = 'garage door', --image = 'tiles/terrain/walls/door_garage.png',
+   name = 'garage door', image = 'tiles/terrain/doors/door_garage.png',
    tooltip = 'A typical garage door.'
 }
 
@@ -402,15 +402,15 @@ newEntity{
 
 newEntity{
    base = 'SHELF',
-   define_as = 'SHELF_WOOD',
-   name = 'wooden shelf', --image = 'tiles/terrain/furniture/shelf_wooden.png',
+   define_as = 'SHELF_WOODEN',
+   name = 'wooden shelf', image = 'tiles/terrain/furniture/shelf_wooden.png',
    tooltip = 'A simple wooden shelf.'
 }
 
 newEntity{
    base = 'SHELF',
    define_as = 'SHELF_METAL',
-   name = 'metal shelf', --image = 'tiles/terrain/furniture/shelf_metal.png',
+   name = 'metal shelf', image = 'tiles/terrain/furniture/shelf_metal.png',
    tooltip = 'A metal shelf, used for storing tools and paint thinner.'
 }
 
@@ -615,18 +615,6 @@ newEntity{
 }
 
 newEntity{
-   --base = 'DOOR',
-   define_as = 'GARAGE_DOOR',
-   name = 'garage door', image = 'tiles/terrain/garage_door1.png',
-   display = 'G', color_r=165, color_g=82, color_b=95,
-   color_br=235, color_bg=126, color_bb=37,
-   notice = true,
-   does_block_move = true,
-   block_sight = true,
-   tooltip = 'A typical garage door.'
-}
-
-newEntity{
    define_as = 'DESK_WOODEN',
    name = 'desk', image = 'tiles/terrain/furniture/desk1.png',
    display = 'u', color_r=190, color_g=120, color_b=35,
@@ -650,7 +638,7 @@ newEntity{
 
 newEntity{
    define_as = 'LAMP_STANDARD',
-   name = 'standard lamp', --image = 'tiles/terrain/furniture/lamp_standard.png',
+   name = 'standard lamp', image = 'tiles/terrain/furniture/lamp_standard.png',
    display = 't', color_r=222, color_g=222, color_b=200,
    color_br=235, color_bg=126, color_bb=37,
    notice = true,
@@ -695,7 +683,7 @@ newEntity{
 newEntity{
    base = 'FENCE',
    define_as = 'FENCE_WOODEN',
-   --image = 'tiles/terrain/walls/fence_wooden.png',
+   image = 'tiles/terrain/walls/fence_wood.png',
    tooltip = 'A wooden fence.'
 }
 
@@ -1022,6 +1010,242 @@ newEntity{
    image = 'tiles/terrain/misc/statue.png',
    display = '&', color_r=199, color_g=199, color_b=210,
    block_sight = false,
-   does_block_move = false,
+   does_block_move = true,
    tooltip = 'A statue.'
+}
+
+newEntity{
+   define_as = 'TREE_SMALL',
+   image = 'tiles/terrain/nature/objects/tree1.png',
+   display = 'T', color_r=19, color_g=199, color_b=21,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'A small tree.'
+}
+
+newEntity{
+   --base = 'DOOR',
+   define_as = 'DOOR_DOTS',
+   image = 'tiles/terrain/doors/door_dots.png',
+   display = '+', color_r=199, color_g=199, color_b=210,
+   block_sight = true,
+   tooltip = 'A door.'
+}
+
+newEntity{
+   define_as = 'OVEN',
+   image = 'tiles/terrain/furniture/oven1.png',
+   display = '*', color_r=199, color_g=199, color_b=210,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'An oven with four gas hobs.'
+}
+
+newEntity{
+   base = 'WINDOW',
+   define_as = 'WINDOW_BRICK_DARK',
+   name = 'plaster brick wall', image = 'tiles/terrain/walls/brick_dark_window.png',
+}
+
+newEntity{
+   define_as = 'ART',
+   image = 'tiles/terrain/misc/urn1.png',
+   display = 'u', colr_r=19, color_g=185, color_b=25,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'Art on display'
+}
+
+newEntity{
+   base = 'ART',
+   define_as = 'URN',
+   image = 'tiles/terrain/misc/urn1.png',
+   tooltip = 'A valuable urn'
+}
+
+newEntity{
+   base = 'ART',
+   define_as = 'URN_DISPLAY_CASE',
+   image = 'tiles/terrain/misc/urn_display_case1.png',
+   tooltip = 'A valuable urn in a glass display case'
+}
+
+newEntity{
+   base = 'ART',
+   define_as = 'DISPLAY_CASE_EMPTY',
+   image = 'tiles/terrain/misc/display_case_empty.png',
+   tooltip = 'An empty glass display case'
+}
+
+newEntity{
+   base = 'ART',
+   define_as = 'DISPLAY_STAND_EMPTY',
+   image = 'tiles/terrain/misc/display_stand_empty.png',
+   tooltip = 'An empty stand'
+}
+
+newEntity{
+   --base = 'DOOR',
+   define_as = 'DOOR_GLASS',
+   image = 'tiles/terrain/doors/glassdoor.png',
+   display = '+', color_r=199, color_g=199, color_b=210,
+   block_sight = false,
+   tooltip = 'A glass door.'
+}
+
+newEntity{
+   --base = 'DOOR',
+   define_as = 'DOOR_FANCY_1',
+   image = 'tiles/terrain/doors/wooddoorinterior.png',
+   display = '+', color_r=199, color_g=199, color_b=210,
+   block_sight = true,
+   tooltip = 'A nice door.'
+}
+
+newEntity{
+   --base = 'DOOR',
+   define_as = 'DOOR_FANCY_2',
+   image = 'tiles/terrain/doors/wooddoornice.png',
+   display = '+', color_r=199, color_g=199, color_b=210,
+   block_sight = true,
+   tooltip = 'A fancy door.'
+}
+
+newEntity{
+   --base = 'DOOR',
+   define_as = 'DOOR_METAL_RED',
+   image = 'tiles/terrain/doors/redmetaldoor.png',
+   display = '+', color_r=199, color_g=19, color_b=21,
+   block_sight = true,
+   tooltip = 'A red metal door.'
+}
+
+newEntity{
+   --base = 'DOOR',
+   define_as = 'DOOR_APART_1',
+   image = 'tiles/terrain/doors/apartment_door.png',
+   display = '+', color_r=199, color_g=199, color_b=210,
+   block_sight = true,
+   tooltip = 'A door.'
+}
+
+newEntity{
+   --base = 'DOOR',
+   define_as = 'DOOR_APART_2',
+   image = 'tiles/terrain/doors/apartment_door2.png',
+   display = '+', color_r=199, color_g=199, color_b=210,
+   block_sight = true,
+   tooltip = 'A door.'
+}
+
+newEntity{
+   --base = 'DOOR',
+   define_as = 'DOOR_SECURE',
+   image = 'tiles/terrain/doors/security_door.png',
+   display = '+', color_r=199, color_g=199, color_b=210,
+   block_sight = true,
+   tooltip = 'A door.'
+}
+
+newEntity{
+   --base = 'DOOR',
+   define_as = 'DOOR_SHACK',
+   image = 'tiles/terrain/doors/shack_door.png',
+   display = '+', color_r=199, color_g=199, color_b=210,
+   block_sight = false,
+   tooltip = 'A door.'
+}
+
+newEntity{
+   define_as = 'mailbox',
+   image = 'tiles/terrain/misc/mailbox1.png',
+   display = '[', color_r=199, color_g=199, color_b=210,
+   block_sight = false,
+   does_block_move = false,
+   tooltip = 'A mailbox.'
+}
+
+newEntity{
+   define_as = 'LADDER_SEWER_OLD',
+   image = 'tiles/terrain/misc/oldsewerladder.png',
+   display = '<', color_r=199, color_g=199, color_b=210,
+   block_sight = false,
+   does_block_move = false,
+   tooltip = 'An old ladder.'
+}
+
+newEntity{
+   define_as = 'RUBBLE_ONE',
+   image = 'tiles/terrain/misc/rubblepile1.png',
+   display = '&', color_r=199, color_g=199, color_b=210,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'Some rubble.'
+}
+
+newEntity{
+   define_as = 'RUBBLE_TWO',
+   image = 'tiles/terrain/misc/rubblepile2.png',
+   display = '&', color_r=199, color_g=199, color_b=210,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'Some rubble.'
+}
+
+newEntity{
+   define_as = 'STONE_STAIR',
+   image = 'tiles/terrain/misc/oldsewerstair.png',
+   display = '&', color_r=199, color_g=199, color_b=210,
+   block_sight = false,
+   does_block_move = false,
+   tooltip = 'Stone steps.'
+}
+
+newEntity{
+	define_as = 'DIRT_DARK',
+	name = 'dark dirt',
+	display = '.', color=colors.GREEN, back_color=colors.GREEN,
+	image = 'tiles/terrain/nature/darkdirt.png'
+}
+
+newEntity{
+	define_as = 'DIRT',
+	name = 'dirt',
+	display = '.', color=colors.GREEN, back_color=colors.GREEN,
+	image = 'tiles/terrain/nature/dirt.png'
+}
+
+newEntity{
+	define_as = 'DIRT_CLAY',
+	name = 'clay',
+	display = '.', color=colors.GREEN, back_color=colors.GREEN,
+	image = 'tiles/terrain/nature/dirtz.png'
+}
+
+newEntity{
+	define_as = 'SAND',
+	name = 'sand',
+	display = '.', color=colors.YELLOW, back_color=colors.YELLOW,
+	image = 'tiles/terrain/nature/sand.png'
+}
+
+newEntity{
+	define_as = 'SAND_CORNER',
+	name = 'sand corner',
+	display = '.', color=colors.GREEN, back_color=colors.YELLOW,
+	image = 'tiles/terrain/nature/sandcorner.png'
+}
+
+newEntity{
+	define_as = 'SAND_SIDE',
+	name = 'sand side',
+	display = '.', color=colors.GREEN, back_color=colors.YELLOW,
+	image = 'tiles/terrain/nature/sandside.png'
+}
+
+newEntity{
+	define_as = 'BOULDER',
+	name = 'boulder',
+	display = '.', color=colors.GREEN, back_color=colors.GREEN,
+	image = 'tiles/terrain/nature/objects/boulder1.png'
 }

@@ -1,6 +1,6 @@
 --Luxury House number 1
 --AUTHOR: MENDONCA
---30 x 15 plot
+--25 x 15 plot
 
 defineTile('p', 'PAVEMENT')
 defineTile('#', 'WALL_BRICK_DARK')

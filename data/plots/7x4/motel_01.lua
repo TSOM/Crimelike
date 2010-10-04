@@ -10,6 +10,7 @@ defineTile(',', 'FLOOR_WOOD_TWO')
 defineTile('.', 'FLOOR_TILE_YORKSTONE')
 defineTile(';', 'CARPET_GREY')
 defineTile('c', 'CONCRETE_FLOOR')
+defineTile('x', 'CONCRETE_CRACK_1')
 defineTile('+', 'SINK')
 defineTile('D', 'WALL_BRICK_DARK_DOOR')
 defineTile('d', 'DOOR_WOOD_DOUBLE')
@@ -26,10 +27,11 @@ defineTile('E', 'BED_WOODEN_N')
 defineTile('e', 'BED_WOODEN_S')
 defineTile('/', 'SHELF_WOOD')
 defineTile('%', 'SHELF_METAL')
-defineTile('x', 'TELEVISION')
 defineTile('X', 'TELEVISION')
 defineTile('F', 'FRIDGE')
 defineTile('u', 'DESK_WOODEN')
+defineTile('?', 'CASH_REGISTER')
+defineTile('"', 'SAFE_SIMPLE')
 
 return{
 [[ppppppppppppppppppppppppppppppppppp]],
@@ -44,11 +46,11 @@ return{
 [[pO;C;#d##,,,,,,,,,,,,,,,,,,,,,O~T~p]],
 [[p8;u;;;;d,88OO888OO888OO888OO88~~~p]],
 [[p88888888D8~~~T~~~~~T~~~~~~~~T~~~~p]],
-[[pcccccccccccccccccccccccccccccccccp]],
+[[pccccccccccccccxccccccccccccccccccp]],
 [[p88O8888O88cccccccccccccccccccccccp]],
-[[p8WN.H#,,,Dcc~~~~cccccccccccccccccp]],
-[[p8##d##,?=8cc~TT~cccccccccccccccccp]],
-[[pOBb;x#,,+Occ~~~~cccccccccccccccccp]],
-[[p8";;;d,,F8cccccccccccccccccccccccp]],
+[[p8WN.H#,,,Dcc~~~~cccccccccxcccxcccp]],
+[[p8##d##,?=8cc~TT~ccccccxccccccccccp]],
+[[pOBb;X#,,+Occ~~~~ccccccccccccxccccp]],
+[[p8";;;d,,F8ccccccccccccxccccccccccp]],
 [[p88O8O88O88cccccccccccccccccccccccp]],
 [[ppppppppppppppppppppppppppppppppppp]]}

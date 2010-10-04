@@ -19,7 +19,7 @@ return {
 	level_range = {1, 20},
 	max_level = 1,
 	decay = {300, 800},
-	width = 100, height = 100,
+	width = 150, height = 150,
 	all_lited = true,
 	persistant = "zone",
 	all_remembered = true,

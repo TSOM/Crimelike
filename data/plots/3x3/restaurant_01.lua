@@ -1,42 +1,31 @@
---Luxury House number 1
+--Small restaurant number 1
 --AUTHOR: MENDONCA
---30 x 15 plot
+--15 x 15 plot
 
 defineTile('p', 'PAVEMENT')
 defineTile('#', 'WALL_DRY')
 defineTile('8', 'WALL_BRICK_DARK')
 defineTile('=', 'COUNTER_WOOD_RED')
 defineTile(':', 'FLOOR_WOOD_TWO')
-defineTile('c', 'CONCRETE_FLOOR')
+defineTile('C', 'CONCRETE_FLOOR')
 defineTile(';', 'FLOOR_CHECKERBOARD')
 defineTile(',', 'FLOOR_BIGCHECK_GREEN')
 defineTile('+', 'SINK')
 defineTile('D', 'WALL_BRICK_DARK_DOOR')
-defineTile('D', 'DOOR_WOOD_DOUBLE')
+defineTile('d', 'DOOR_WOOD_DOUBLE')
 defineTile('O', 'WINDOW_BRICK_DARK')
 defineTile('W', 'WC')
-defineTile('~', 'DARK_GRASS_ONE')
+defineTile('~', 'GRASS_ONE')
 defineTile('N', 'WHB')
 defineTile('H', 'SHOWER')
-defineTile('C', 'CHAIR_WOODEN')
+defineTile('c', 'CHAIR_WOODEN')
 defineTile('T', 'TABLE_WOODEN')
-defineTile('B', 'BED_WOODEN_E')
-defineTile('b', 'BED_WOODEN_W')
-defineTile('E', 'BED_WOODEN_N')
-defineTile('e', 'BED_WOODEN_S')
 defineTile('/', 'SHELF_WOOD')
 defineTile('%', 'SHELF_METAL')
 defineTile('x', 'TELEVISION')
 defineTile('X', 'TELEVISION')
 defineTile('F', 'FRIDGE')
-defineTile('S', 'SOFA_RIGHT_1')
-defineTile('s', 'SOFA_RIGHT_2')
-defineTile('<', 'STAIR_WOODEN_UP')
-defineTile('>', 'STAIR_WOODEN_DOWN')
-defineTile('A', 'BATH_E')
-defineTile('a', 'BATH_W')
-defineTile('G', 'DOOR_GARAGE')
-defineTile('u', 'DESK_WOODEN')
+defineTile('e', 'OVEN')
 defineTile('-', 'FENCE_IRON')
 defineTile('t', 'LAMP_STANDARD')
 defineTile('v', 'PLANTPOT_FIXED')
@@ -46,7 +35,7 @@ defineTile('?', 'CASH_REGISTER')
 return{
 [[ppppppppppppppp]],
 [[p8888888888888p]],
-[[p8=*=*=;;;dccDp]],
+[[p8=e=e=;;;dCCDp]],
 [[pO;;;;;;;;#%%8p]],
 [[p8F;;;F#d####8p]],
 [[pOT;;;T#:d,,,Op]],
