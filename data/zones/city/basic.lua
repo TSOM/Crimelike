@@ -83,7 +83,7 @@ newEntity{
 	act = function(self)
 		-- Do basic actor stuff
 		if not engine.Actor.act(self) then return end
-		
+
 		-- Shut the door?
 		if game.level.map(self.x, self.y, Map.ACTOR) or game.level.map(self.x, self.y, Map.OBJECT) then
 			self.close_countdown = 4
@@ -94,7 +94,7 @@ newEntity{
 			game.level:removeEntity(self)
 			game.level.map(self.x, self.y, Map.TERRAIN, game.zone.grid_list[self.door_closed])
 		end
-		
+
 		if not self.energy.used then self:useEnergy() end
 		return true
 	end,
