@@ -5,7 +5,7 @@
 defineTile('p', 'PAVEMENT')
 defineTile('#', 'WALL_BRICK_DARK')
 defineTile('=', 'COUNTER_WOOD_RED')
-defineTile(',', 'FLOOR_WOOD_TWO')
+defineTile('.', 'FLOOR_WOOD_TWO')
 defineTile(',', 'CARPET_GREY')
 defineTile('c', 'CONCRETE_FLOOR')
 defineTile('+', 'SINK')
