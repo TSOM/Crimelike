@@ -23,14 +23,16 @@ defineTile('L', 'GRASS_ONE')
 defineTile('-', 'TREE_SMALL')
 defineTile('.', 'FLOOR_WOOD_ONE')
 
-LLLLLLLLLLLLLLL#*###
-LL######*#######+HW#
-PPD............D...#
-LL#######D#######D##
-LL#....t...S$$R#..X#
-LL#.C.....CccccD.E.#
-LL#CTC.........#.es#
-LL#.C..........##*##
-LL#####D#*##*###LLLL
-PPPPPPPPLLLLLLLLLLLL
-LLLLLLLLLLLLLLLL-LLL
+
+return{
+LLLLLLLLLLLLLLL#*###,
+LL######*#######+HW#,
+PPD............D...#,
+LL#######D#######D##,
+LL#....t...S$$R#..X#,
+LL#.C.....CccccD.E.#,
+LL#CTC.........#.es#,
+LL#.C..........##*##,
+LL#####D#*##*###LLLL,
+PPPPPPPPLLLLLLLLLLLL,
+LLLLLLLLLLLLLLLL-LLL}
