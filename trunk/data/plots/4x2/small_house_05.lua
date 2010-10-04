@@ -4,9 +4,9 @@
 
 defineTile('P', 'FLOOR_COBBLESTONE_ROUGH')
 defineTile('c', 'FLOOR_CHECKERBOARD')
-defineTile('#', 'WALL_BRICK_DARK')
-defineTile('D', 'WALL_BRICK_DARK_DOOR')
-defineTile('*', 'WINDOW_BRICK_DARK')
+defineTile('#', 'WALL_SLATTED')
+defineTile('D', 'DOOR_DARK_PLANK')
+defineTile('*', 'WINDOW_STORE')
 defineTile('H', 'SHOWER')
 defineTile('C', 'CHAIR_WOODEN')
 defineTile('T', 'TABLE_WOODEN')
