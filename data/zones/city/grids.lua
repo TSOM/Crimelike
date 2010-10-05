@@ -402,7 +402,7 @@ newEntity{
 
 newEntity{
    base = 'SHELF',
-   define_as = 'SHELF_WOODEN',
+   define_as = 'SHELF_WOOD',
    name = 'wooden shelf', image = 'tiles/terrain/furniture/shelf_wooden.png',
    tooltip = 'A simple wooden shelf.'
 }
@@ -1044,13 +1044,13 @@ newEntity{
 newEntity{
    base = 'WINDOW',
    define_as = 'WINDOW_BRICK_DARK',
-   name = 'plaster brick wall', image = 'tiles/terrain/walls/brick_dark_window.png',
+   name = 'dark brick window', image = 'tiles/terrain/walls/brick_dark_window.png',
 }
 
 newEntity{
    define_as = 'ART',
    image = 'tiles/terrain/misc/urn1.png',
-   display = 'u', colr_r=19, color_g=185, color_b=25,
+   display = 'u', color_r=19, color_g=185, color_b=25,
    block_sight = false,
    does_block_move = true,
    tooltip = 'Art on display'
@@ -1248,4 +1248,55 @@ newEntity{
 	name = 'boulder',
 	display = '.', color=colors.GREEN, back_color=colors.GREEN,
 	image = 'tiles/terrain/nature/objects/boulder1.png'
+}
+
+newEntity{
+   define_as = 'SHIRT_RACK',
+   image = 'tiles/terrain/furniture/shirt_rack.png',
+   display = '%', color_r=19, color_g=185, color_b=25,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'Some shirts on a rack'
+}
+
+newEntity{
+   define_as = 'PANTS_RACK',
+   image = 'tiles/terrain/furniture/pants_rack.png',
+   display = '%', color_r=19, color_g=185, color_b=25,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'Some pants on a rack'
+}
+
+newEntity{
+   define_as = 'ORGAN',
+   image = 'tiles/terrain/furniture/organ.png',
+   display = '[', color_r=19, color_g=185, color_b=25,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'A church organ'
+}
+
+newEntity{
+   define_as = 'ORGAN_PIPES',
+   image = 'tiles/terrain/furniture/organ_pipes.png',
+   display = ']', color_r=19, color_g=185, color_b=25,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'The pipes for the organ'
+}
+
+newEntity{
+   define_as = 'CASH_REGISTER',
+   image = 'tiles/terrain/furniture/register.png',
+   display = '$', color_r=19, color_g=185, color_b=25,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'cash register. Contains money.'
+}
+
+newEntity{
+   base = 'WINDOW',
+   define_as = 'WINDOW_STORE',
+   name = 'store window', image = 'tiles/terrain/windows/store_window.png',
 }
