@@ -19,7 +19,7 @@ defineTile('E', 'POOL_TABLE_W')
 defineTile('e', 'POOL_TABLE_E')
 defineTile('R', 'POOL_TABLE_N')
 defineTile('r', 'POOL_TABLE_S')
-defineTile('%', 'SHELF_WOODEN')
+defineTile('%', 'SHELF_WOOD')
 defineTile('v', 'PLANTPOT_FIXED')
 
 return{

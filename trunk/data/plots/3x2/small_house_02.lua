@@ -26,13 +26,13 @@ defineTile('S', 'SOFA_DOWN_1')
 defineTile('s', 'SOFA_DOWN_2')
 
 return{
-[[pppppppppppppp]],
-[[p######O#####p]],
-[[pOBb.#=+F#WN#p]],
-[[p#...D,,,D.H#p]],
-[[p#####,,#####p]],
-[[p#Ss.C,,#.Bb#p]],
-[[pO...TC,D...Op]],
-[[p#.X.,,,#.x.#p]],
-[[p###O#D##O###p]],
-[[pppppppppppppp]]}
+[[ppppppppppppppp]],
+[[p######O#####pp]],
+[[pOBb.#=+F#WN#pp]],
+[[p#...D,,,D.H#pp]],
+[[p#####,,#####pp]],
+[[p#Ss.C,,#.Bb#pp]],
+[[pO...TC,D...Opp]],
+[[p#.X.,,,#.x.#pp]],
+[[p###O#D##O###pp]],
+[[ppppppppppppppp]]}
