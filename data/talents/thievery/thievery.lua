@@ -28,9 +28,9 @@ newTalent{
 	    game.logPlayer(self, "That cannot be picked")
 	   else
 		--should include a modifier here for lockpicking kit
-		print(self:getTalentLevel(t) * math.random(0,20))
-		print(target.lock_strength)
-		if self:getTalentLevel(t) * math.random(0,20) > target.lock_strength then
+		--print(self:getTalentLevel(t) * math.random(0,20))
+		--print(target.lock_strength)
+		if self:getTalentLevel(t) * rng.range(0,20) > target.lock_strength then
 		target.locked = false
 		game.logPlayer(self, "The lock clicks open")
 		else

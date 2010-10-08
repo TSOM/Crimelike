@@ -13,7 +13,7 @@
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 --
 
-
+math.randomseed(os.time())
 -- This file loads the game module, and loads data
 dofile("/mod/util.lua")
 local KeyBind = require "engine.KeyBind"

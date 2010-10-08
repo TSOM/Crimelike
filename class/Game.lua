@@ -225,7 +225,7 @@ end
 
 function _M:tick()
 	if self.level then
-		if self.target.target.entity and not self.level:hasEntity(self.target.target.entity) then self.target.target.entity = false end
+		self:targetOnTick()
 
 		engine.GameTurnBased.tick(self)
 		-- Fun stuff: this can make the game realtime, although callit it in display() will make it work better
@@ -233,8 +233,10 @@ function _M:tick()
 		-- engine.GameEnergyBased.tick(self)
 	end
 	-- When paused (waiting for player input) we return true: this means we wont be called again until an event wakes us
-	if game.paused then return true end
+	if self.paused and not savefile_pipe.saving then return true end
 end
+
+
 
 --- Called every game turns
 function _M:onTurn()
@@ -576,10 +578,8 @@ end
 
 --- Requests the game to save
 function _M:saveGame()
-	local save = Savefile.new(self.save_name)
-	save:saveGame(self)
-	save:close()
-	self.log("Saved game.")
+	savefile_pipe:push(self.save_name, "game", self)
+	self.log("Saving game...")
 end
 
 -- A flood-fill

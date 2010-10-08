@@ -82,8 +82,7 @@ end
 --- Restore ressources
 function _M:restoreRessources()
 	self.actor.life = self.actor.max_life
-	self.actor.vload = 0
-
+	
 	self.actor.energy.value = game.energy_to_act
 end
 
@@ -107,9 +106,8 @@ function _M:use()
 	local act = self.list[self.sel].action
 
 	if act == "exit" then
-		local save = Savefile.new(game.save_name)
-		save:delete()
-		save:close()
+	savefile_pipe:push(self.save_name, "game", self)
+	self.log("Saving game...")
 		util.showMainMenu()
 	elseif act == "dump" then
 		game:registerDialog(require("mod.dialogs.CharacterSheet").new(self.actor))

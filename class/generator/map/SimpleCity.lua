@@ -178,8 +178,8 @@ local col = 2
 					end
 				end
 				
-			local plotw = math.random(minPlotSize,maxPlotSize)
-			local ploth = math.random(minPlotSize,maxPlotSize)
+			local plotw = rng.range(minPlotSize,maxPlotSize)
+			local ploth = rng.range(minPlotSize,maxPlotSize)
 			
 			if availw < (minPlotSize + plotw + 1) then plotw = availw end
 			if availh < (minPlotSize + ploth + 1) then ploth = availh end
@@ -380,15 +380,15 @@ end
 	
 local rotationnum = 1
 if curplotw == curploth then 
-rotationum = math.random(4)
+rotationum = rng.range(1,4)
 elseif curplotw > curploth then
-	if math.random() < 0.5 then
+	if rng.percent(50) then
 	rotationnum = 2
 	else
 	rotationnum = 4
 	end
 else
-	if math.random() < 0.5 then
+	if rng.percent(50)then
 	rotationnum = 1
 	else
 	rotationnum = 3
@@ -439,7 +439,7 @@ t = table.Copy(ts)
 		end
 
 		--X Symetric
-		if math.random() < 0.5 then
+		if rng.percent(50) then
 		ts = nil
 		ts = table.Copy(t)
 			local mx, my = #ts, #ts[1]
@@ -450,7 +450,7 @@ t = table.Copy(ts)
 			end end
 
 		-- Y symetric tile definition
-		elseif math.random() < 0.5 then
+		elseif rng.percent(50) then
 		ts = nil
 		ts = table.Copy(t)
 			local mx, my = #ts, #ts[1]
@@ -510,10 +510,10 @@ local chosenplot = nil
 			if availplots[1] == ".svn" then 
 			table.remove(availplots, 1)
 			end
-		
+			
 			while chosenplot == nil do
 				for k,v in pairs (availplots) do
-					if math.random(#availplots) == 1 then
+					if rng.range(1,#availplots) == 1 then
 					chosenplot = v
 					print(chosenplot)
 					self:createTile(self:determineRotation(dirName .. "/" .. chosenplot, curplotw,curploth),row,col)

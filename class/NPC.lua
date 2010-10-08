@@ -30,8 +30,8 @@ function _M:act()
 	-- Do basic actor stuff
 	if not mod.class.Actor.act(self) then return end
 	
-	-- Compute FOV, if needed
-	self:computeFOV(self.sight or 20)
+	-- Compute FOV, if needed. Currently, I've forced it to every single turn.
+	self:computeFOV(self.sight or 20, nil,nil,true)
 
 	-- Let the AI think .... beware of Shub !
 	-- If AI did nothing, use energy anyway
@@ -45,8 +45,45 @@ function _M:onTakeHit(value, src, dam_type)
 	if not self.ai_target.actor and src.targetable then
 		self.ai_target.actor = src
 	end
+local fearlevel = self.fearlevel or 0
 
+	if self.fearlevel > 50 or self.coward then
+	self:runAI("injured_flee")
+	end
 	return mod.class.Actor.onTakeHit(self, value, src)
+end
+
+function _M:witnessCrime(targetCriminal)
+	if self.criminal then
+		--maybe a check here to see if the criminal should check if their friends are getting crimed all over
+	
+	else
+	
+	self:tryToReport()
+	
+	end
+
+end
+
+function _M:sendReports()
+print(self.name .. " reports the following crimes")
+	for k,v in pairs(self.reports) do
+	
+	
+	PrintTable(v)
+	end
+
+
+end
+
+--Checks if the NPC has a phone or can find one to run to so they can go report.
+function _M:tryToReport()
+--Check inventory for cell phone in future.
+--game.logSeen(self, self.name .. " starts dialing their cell phone.")
+
+
+
+
 end
 
 function _M:tooltip()

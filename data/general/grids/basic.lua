@@ -37,7 +37,7 @@ newEntity{
 newEntity{
 	define_as = "FLOOR",
 	name = "floor", image = "terrain/marble_floor.png",
-	display = ' ', back_color=colors.GREY,
+	display = ' ', back_color=colors.GREY
 }
 
 newEntity{
@@ -49,7 +49,7 @@ newEntity{
 	can_pass = {pass_wall=1},
 	block_sight = true,
 	air_level = -20,
-	dig = "FLOOR",
+	dig = "FLOOR"
 }
 
 newEntity{
@@ -59,8 +59,7 @@ newEntity{
 	notice = true,
 	block_sight = false,
 	does_block_move = true,
-	dig = "FLOOR",
-	tooltip = "A desk.",
+	tooltip = "A desk."
 }
 
 newEntity{
@@ -71,10 +70,30 @@ newEntity{
 	notice = true,
 	block_sight = false,
 	does_block_move = true,
-	dig = "FLOOR",
-	tooltip = "A bed.",
+	tooltip = "A bed."
 }
 
+newEntity{
+	define_as = "TABLE",
+	name = "table",
+	display = 'T', color_r=31, color_g=136, color_b=145,
+	color_br=247, color_bg=239, color_bb=37,
+	notice = true,
+	block_sight = false,
+	does_block_move = true,
+	tooltip = "A table"
+}
+
+newEntity{
+	define_as = "CHAIR",
+	name = "chair",
+	display = 'c', color_r=31, color_g=136, color_b=145,
+	color_br=247, color_bg=239, color_bb=37,
+	notice = true,
+	block_sight = false,
+	does_block_move = true,
+	tooltip = "A chair"
+}
 
 newEntity{
 	define_as = "WINDOW",
@@ -86,4 +105,16 @@ newEntity{
 	does_block_move = true,
 	dig = "FLOOR",
 	tooltip = "A window.",
+}
+
+newEntity{
+	define_as = "PHONE",
+	name = "phone",
+	display = 'p', color=colors.ANTIQUE_WHITE,
+	color_br=0, color_bg=0, color_bb=0,
+	notice = true,
+	block_sight = false,
+	does_block_move = false,
+	tooltip = "A phone.",
+	phone = true,
 }
