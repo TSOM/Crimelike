@@ -82,7 +82,7 @@ end
 --- Restore ressources
 function _M:restoreRessources()
 	self.actor.life = self.actor.max_life
-	
+
 	self.actor.energy.value = game.energy_to_act
 end
 
@@ -133,7 +133,7 @@ end
 
 function _M:drawDialog(s)
 	local help = ([[You have #LIGHT_RED#died#LAST#!
-Death in this game is usually permanent, but if you have a means of resurrection it will be proposed in the menu below.
+Death in this game is permanent.
 You can dump your character data to a file to remember her/him forever, or you can exit and try once again to survive in the wilds!
 ]]):splitLines(self.iw - 10, self.font)
 
