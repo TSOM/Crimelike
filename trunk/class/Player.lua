@@ -209,7 +209,6 @@ function _M:restCheck()
 	if spotHostiles(self) then return false, "hostile spotted" end
 
 	-- Check resources, make sure they CAN go up, otherwise we will never stop
-	if self.vload > 0 and self.vload_regen < 0 then return true end
 	if self.life < self.max_life and self.life_regen> 0 then return true end
 	if self:getStamina() < self:getMaxStamina() and self.stamina_regen> 0 then return true end
 
@@ -459,6 +458,14 @@ function _M:playerUseItem(object, item, inven)
 		true
 	)
 end
+
+--Still need to check if we're actually noticed here. Default is 100.
+function _M:onSeen(who,t)
+self.fov.seen_by[who] = t
+
+
+end
+
 
 function _M:doDrop(inven, item)
 	if game.zone.wilderness then game.logPlayer(self, "You can not drop on the world map.") return end

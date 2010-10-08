@@ -25,7 +25,7 @@ require "engine.interface.ActorStats"
 require "engine.interface.ActorTalents"
 require "engine.interface.ActorQuest"
 require "engine.interface.ActorResource"
-require "engine.interface.ActorFOV"
+require "mod.class.interface.ActorFOV"
 require "mod.class.interface.Combat"
 require "mod.class.interface.ActorLife"
 
@@ -45,7 +45,7 @@ module(..., package.seeall, class.inherit(
 	engine.interface.ActorTalents,
 	engine.interface.ActorQuest,
 	engine.interface.ActorResource,
-	engine.interface.ActorFOV,
+	mod.class.interface.ActorFOV,
 	mod.class.interface.Combat
 ))
 
@@ -56,10 +56,8 @@ function _M:init(t, no_default)
 	t.combat_armor = 0
 
 	-- Default regen
-	t.vload_regen = t.vload_regen or 1
 	t.life_regen = t.life_regen or 0.25 -- Life regen real slow
 	t.stamina_regen = t.stamina_regen or 0.3
-	t.vload = t.vload or 0
 
 	-- Default melee barehanded damage
 	t.combat = t.combat or { dam=1, }
@@ -80,7 +78,7 @@ function _M:init(t, no_default)
 	engine.interface.ActorResource.init(self, t)
 	engine.interface.ActorStats.init(self, t)
 	engine.interface.ActorLevel.init(self, t)
-	engine.interface.ActorFOV.init(self, t)
+	mod.class.interface.ActorFOV.init(self, t)
 end
 
 function _M:act()
@@ -174,7 +172,6 @@ Faction: %s%s (%s)]]):format(
 	self.name,
 	self.level,
 	self.life, self.life * 100 / self.max_life,
-	self.vload,
 	self:getStr(),
 	self:getAgi(),
 	self:getCon(),
@@ -230,9 +227,6 @@ function _M:levelup()
 	-- Heal up on new level
 	self.life = self.max_life
 	self.stamina = self:getMaxStamina()
-	if self.type ~= "zombie" then
-		self.vload = 0
-	end
 end
 
 --- Notifies a change of stat value
@@ -390,12 +384,13 @@ function _M:canSee(actor, def, def_pct)
 
 	
 	if actor:attr("sneak") and actor ~= self then
-		local def = self:getPer()
-		local hit, chance = self:checkHit(def, actor:attr("sneak") + (actor:attr("inc_stealth") or 0), 0, 100)
-		if not hit then
-			print('SNEAKING' .. chance)
-			return false, chance
-		end
+		--local def = self:getPer()
+		--local hit, chance = self:checkHit(def, actor:attr("sneak") + (actor:attr("inc_stealth") or 0), 0, 100)
+		
+		--if not hit then
+		--	print('SNEAKING ' .. chance)
+		--	return false, chance
+		--end
 	end
 
 	if def ~= nil then

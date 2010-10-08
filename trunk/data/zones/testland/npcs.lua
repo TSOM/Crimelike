@@ -13,3 +13,4 @@
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 --
 
+load("/data/general/npcs/humans.lua")

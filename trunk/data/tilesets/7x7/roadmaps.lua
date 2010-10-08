@@ -77,7 +77,7 @@ end
 				end
 			end
 			
-		local aboveOpenSpaces = math.random(0,maxbtroads)
+		local aboveOpenSpaces = rng.range(0,maxbtroads)
 		
 			--Checks the ABOVE and to the EAST plot. We use this to see if it is getting to see if it is grown too tall or is too short
 			for a = 1, n - 1 do
@@ -92,7 +92,7 @@ end
 			end
 			
 			--Checks the number of street tiles to the WEST. This is used to check if a plot is becoming too wide or narrow
-			local beforeOpenSpaces = math.random(0,maxbtroads)
+			local beforeOpenSpaces = rng.range(0,maxbtroads)
 			
 			for a = 1, n - 1 do
 				local beforeloc = city_map[n-a][i] or 'fail'

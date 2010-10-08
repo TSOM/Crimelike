@@ -22,5 +22,6 @@ load("/data/general/objects/medicine.lua")
 
 -- Clothing
 load("/data/general/objects/clothing.lua")
+load("/data/general/objects/containers.lua")
 load("/data/general/objects/documents.lua")
 load("/data/general/objects/tools.lua")

@@ -18,13 +18,13 @@ local Talents = require("engine.interface.ActorTalents")
 
 newEntity{
 	define_as = "BASE_NPC_HUMAN",
-	type = "human", subtype = "humanoid",
+	type = "human",
 	display = "h", color=colors.BLUE,
 	desc = [[A fellow human.]],
-	body = { INVEN = 1000, MAINHAND = 1, OFFHAND = 1, BODY = 1, HEAD = 1, HANDS = 1, FEET = 1, AMMO = 1 },
-	ai = "injured_flee",
+	body = { MAINHAND = {1, 10}, OFFHAND = {1,10}, BODY = {1,10}, BACK = {1, 10}, HEAD = {1,5}, HANDS = {1,5}, FEET = {1,10}, 
+		AIR = {1,100}, FLOOR = {1,10000} },
+	--ai = "injured_flee",
 	stats = { str=10, agi=10, con=10 },
-	vload = 0,
 	combat_armor = 0,
 	max_life = resolvers.rngavg(60,100),
 	combat = {

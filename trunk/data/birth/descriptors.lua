@@ -66,7 +66,7 @@ newBirthDescriptor{
 		[ActorTalents.T_SHOOT]=2,
         },
 	copy = {
-		resolvers.equip{ id=true,
+		resolvers.inventory{ id=true,
 			{type="weapon", subtype="pistol", autoreq=true},
 			{type="ammo", subtype="clip", autoreq=true},
 		},
