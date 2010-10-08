@@ -1,0 +1,11 @@
+Tile overlaying done:
+
+2x2:
+*shack_01
+*shack_02
+
+3x2:
+*shack_03
+*small_house_01
+*small_house_02
+*small_house_04
