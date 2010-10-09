@@ -5,34 +5,36 @@
 defineTile('P', 'FLOOR_COBBLESTONE_ROUGH')
 defineTile('c', 'FLOOR_CHECKERBOARD')
 defineTile('#', 'WALL_SLATTED')
-defineTile('D', 'DOOR_DARK_PLANK')
-defineTile('*', 'WINDOW_STORE')
-defineTile('H', 'SHOWER')
-defineTile('C', 'CHAIR_WOODEN')
-defineTile('T', 'TABLE_WOODEN')
-defineTile('+', 'SINK')
-defineTile('W', 'WC')
-defineTile('$', 'COUNTER_WOOD_RED')
-defineTile('t', 'TELEVISION')
-defineTile('E', 'BED_WOODEN_N')
-defineTile('e', 'BED_WOODEN_S')
-defineTile('X', 'TABLE_NIGHT')
-defineTile('R', 'FRIDGE')
-defineTile('S', 'OVEN')
+defineTile('D', 'WALL_SLATTED', 'DOOR_DARK_PLANK')
+defineTile('d', 'WALL_SLATTED', 'DOOR_FANCY_2')
+defineTile('*', 'WALL_SLATTED', 'WINDOW_STORE')
+defineTile('H', 'FLOOR_TILE_TINY', 'SHOWER')
+defineTile('C', 'FLOOR_WOOD_ONE', 'CHAIR_WOODEN')
+defineTile('T', 'FLOOR_WOOD_ONE', 'TABLE_WOODEN')
+defineTile('+', 'FLOOR_TILE_TINY', 'WHB')
+defineTile('W', 'FLOOR_TILE_TINY', 'WC')
+defineTile('$', 'FLOOR_CHECKERBOARD', 'COUNTER_WOOD_RED')
+defineTile('t', 'FLOOR_WOOD_ONE', 'TELEVISION')
+defineTile('E', 'CARPET_GREY', 'BED_WOODEN_W')
+defineTile('e', 'CARPET_GREY', 'BED_WOODEN_E')
+defineTile('X', 'CARPET_GREY', 'TABLE_NIGHT')
+defineTile('R', 'FLOOR_CHECKERBOARD', 'FRIDGE')
+defineTile('S', 'FLOOR_CHECKERBOARD', 'OVEN')
 defineTile('L', 'GRASS_ONE')
-defineTile('-', 'TREE_SMALL')
+defineTile('-', 'GRASS_ONE', 'TREE_SMALL')
 defineTile('.', 'FLOOR_WOOD_ONE')
-
+defineTile('_', 'FLOOR_TILE_TINY')
+defineTile(',', 'CARPET_GREY')
 
 return{
-LLLLLLLLLLLLLLL#*###,
-LL######*#######+HW#,
-PPD............D...#,
-LL#######D#######D##,
-LL#....t...S$$R#..X#,
-LL#.C.....CccccD.E.#,
-LL#CTC.........#.es#,
-LL#.C..........##*##,
-LL#####D#*##*###LLLL,
-PPPPPPPPLLLLLLLLLLLL,
-LLLLLLLLLLLLLLLL-LLL}
+[[LLLLLLLLLLLLLLL#*###]],
+[[LL######*#######+HW#]],
+[[PPD............d___#]],
+[[LL#######d#######d##]],
+[[LL#....t...S$$R#,,,#]],
+[[LL#.C.....Cccccd,,X#]],
+[[LL#CTC.........#,eE#]],
+[[LL#.C..........##*##]],
+[[LL#####D#*##*###LLLL]],
+[[PPPPPPPPLLLLLLLLLLL-]],
+[[LLLLLLLLLLLLLLLL-LLL]]}
