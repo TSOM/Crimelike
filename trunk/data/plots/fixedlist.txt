@@ -16,3 +16,6 @@ Tile overlaying done:
 
 4x2:
 *small_house_05
+
+6x3:
+*park_02
