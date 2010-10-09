@@ -9,3 +9,10 @@ Tile overlaying done:
 *small_house_01
 *small_house_02
 *small_house_04
+
+3x3:
+*medium_house_02
+*park_01
+
+4x2:
+*small_house_05

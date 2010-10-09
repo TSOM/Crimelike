@@ -3,8 +3,8 @@
 --15 x 15 plot
 
 defineTile('p', 'PAVEMENT')
-defineTile('^', 'BOULDER')
-defineTile('T', 'TREE_SMALL')
+defineTile('^', 'GRASS_ONE', 'BOULDER')
+defineTile('T', 'GRASS_ONE', 'TREE_SMALL')
 defineTile('~', 'GRASS_ONE')
 defineTile('%', 'WATER')
 defineTile('#', 'FLOOR_BRICK_CLAY_TWO')
