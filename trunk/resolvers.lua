@@ -46,7 +46,7 @@ function resolvers.calc.equip(t, e)
 			end
 
 			if not e:wearObject(o, true, false) then
-				e:addObjectToAnyInven(o)
+				e:addObjectToAnyInven(o, true)
 			end
 
 			game.zone:addEntity(game.level, o, "object")
@@ -73,7 +73,7 @@ function resolvers.calc.inventory(t, e)
 		end
 		if o then
 			print("Zone made us an inventory according to filter!", o:getName())
-			e:addObjectToAnyInven(o)
+			e:addObjectToAnyInven(o, true)
 			game.zone:addEntity(game.level, o, "object")
 
 			if t[1].id then o:identify(t[1].id) end
@@ -105,7 +105,7 @@ function resolvers.calc.drops(t, e)
 		end
 		if o then
 			print("Zone made us an drop according to filter!", o:getName())
-			e:addObjectToAnyInven(o)
+			e:addObjectToAnyInven(o, true)
 			game.zone:addEntity(game.level, o, "object")
 
 			if t.id then o:identify(t.id) end

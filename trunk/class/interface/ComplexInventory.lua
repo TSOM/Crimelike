@@ -73,7 +73,7 @@ function _M:getInven(id)
 	end
 end
 
-function _M:addObjectToAnyInven(o)
+function _M:addObjectToAnyInven(o, drop_object) --If dropObject is true, the object is placed on the map at self.x, self.y if adding it fails
 	local objectAdded = false
 	for priority, data in pairs(self.invenPriorities) do
 		if data.inven then
@@ -114,9 +114,12 @@ function _M:addObjectToAnyInven(o)
 	end
 			
 	if not objectAdded then -- No space remaining. Dropping object.
-		game.level.map:addObject(self.x, self.y, o)
+		if drop_object then
+			game.level.map:addObject(self.x, self.y, o)
+		end
+		return false
 	end
-
+	return true
 end
 
 --- Adds an object to an inventory
@@ -169,12 +172,20 @@ function _M:itemPosition(inven, o)
 end
 
 --- Picks an object from the floor
-function _M:pickupFloor(i, vocal, no_sort, inven, container) --Inven controls which slot the item is put into, and container controls which object the item is put into (this can be nil)
+-- Inven controls which slot the item is put into, and container controls which object the item is put into (this can be nil)
+-- If both inven and container are nil, all slots are tried until the item is successfully added
+function _M:pickupFloor(i, vocal, no_sort, inven, container) 
 	local o = game.level.map:getObject(self.x, self.y, i)
-	container = container or self
+	local success = false
 	if o then
 		local prepickup = o:check("on_prepickup", self, i)
-		if not prepickup and container:addObject(inven or container.INVEN_INVEN, o) then
+		if inven == nil and container == nil then
+			success = self:addObjectToAnyInven(o)
+		else
+			container = container or self
+			success = container:addObject(inven or container.INVEN_INVEN, o)
+		end
+		if not prepickup and success then
 			game.level.map:removeObject(self.x, self.y, i)
 			if not no_sort then self:sortInven(self.INVEN_INVEN) end
 
@@ -188,6 +199,7 @@ function _M:pickupFloor(i, vocal, no_sort, inven, container) --Inven controls wh
 	else
 		if vocal then game.logSeen(self, "There is nothing to pickup there.") end
 	end
+	return success
 end
 
 --- Removes an object from inventory
