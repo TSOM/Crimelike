@@ -73,6 +73,52 @@ function _M:getInven(id)
 	end
 end
 
+function _M:addObjectToAnyInven(o)
+	local objectAdded = false
+	for priority, data in pairs(self.invenPriorities) do
+		if data.inven then
+			objectAdded = self:addObject(data.inven, o)
+		elseif data.object then
+			for inven_id, inven in pairs(self.inven) do
+				for items, object in pairs(inven) do
+					if object == data.object then
+						objectAdded = object:addObject(data.itemInven, o)
+					end
+				end
+			end
+		end
+		if objectAdded then
+			break
+		end
+	end
+	if not objectAdded then -- Checking all inventory slots
+		for inven_id, inven in pairs(self.inven) do
+			if inven_id ~= self.INVEN_AIR and inven_id ~= self.INVEN_FLOOR then
+				if not self.inven_def[inven_id].is_worn then
+					for item, object in ipairs(inven) do
+						for object_inven_id, object_inven in pairs(object.inven) do
+							if not object.inven_def[object_inven_id].is_worn then
+								objectAdded = object:addObject(object_inven, o)
+								if objectAdded then break end
+							end
+						end
+						if objectAdded then break end
+					end
+					if not objectAdded then
+						objectAdded = self:addObject(inven, o)
+					end
+				end
+				if objectAdded then break end
+			end
+		end
+	end
+			
+	if not objectAdded then -- No space remaining. Dropping object.
+		game.level.map:addObject(self.x, self.y, o)
+	end
+
+end
+
 --- Adds an object to an inventory
 -- @return false if the object could not be added
 function _M:addObject(inven_id, o)
@@ -359,7 +405,12 @@ end
 
 --- Re-order inventory, sorting and stacking it
 function _M:sortInven(inven)
-	if not inven then inven = self.inven[self.INVEN_INVEN] end
+	if not inven then
+		for inven_id, nextInven in pairs(self.inven) do
+			self:sortInven(nextInven)
+		end
+		return
+	end
 	inven = self:getInven(inven)
 
 	-- Stack objects first, from bottom
