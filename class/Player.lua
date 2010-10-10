@@ -371,29 +371,11 @@ function _M:playerInventory()
 end
 
 function _M:playerPickup()
-	local attemptPickup = function(item)
-		for priority, data in pairs(self.invenPriorities) do
-			if data.inven then
-				self:pickupFloor(item, false, true, data.inven)
-			elseif data.object then
-				for inven_id, inven in pairs(self.inven) do
-					for items, object in pairs(inven) do
-						if object == data.object then
-							self:pickupFloor(item, false, true, data.itemInven, object)
-						end
-					end
-				end
-			end
-			if game.level.map:getObject(self.x, self.y, item) ~= o then
-				break
-			end
-		end
-	end
 	-- If 2 or more objects, display a pickup dialog, otehrwise just picks up
 	if game.level.map:getObject(self.x, self.y, 2) then
 		local titleupdator = self:getEncumberTitleUpdator("Pickup")
 		local d d = self:showPickupFloor(titleupdator(), nil, function(o, item)
-			attemptPickup(item)
+			self:pickupFloor(item, false, true)
 			if game.level.map:getObject(self.x, self.y, item) ~= o then 
 				game.logSeen(self, "%s picks up: %s.", self.name:capitalize(), o:getName{do_color=true})
 			else 
@@ -407,7 +389,7 @@ function _M:playerPickup()
 		end)
 	else
 		o = game.level.map:getObject(self.x, self.y, 1)
-		attemptPickup(1)
+		self:pickupFloor(1, false, true)
 		if game.level.map:getObject(self.x, self.y, 1) ~= o then 
 			game.logSeen(self, "%s picks up: %s.", self.name:capitalize(), o:getName{do_color=true})
 		else
