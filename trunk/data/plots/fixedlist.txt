@@ -13,6 +13,7 @@ Tile overlaying done:
 3x3:
 *medium_house_02
 *park_01
+*restaurant_01
 
 4x2:
 *small_house_05
