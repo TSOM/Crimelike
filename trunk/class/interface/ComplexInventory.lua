@@ -468,10 +468,32 @@ end
 --- Finds an object by name in all the actor's inventories
 -- @param name the name to look for
 -- @param getname the parameters to pass to getName(), if nil the default is {no_count=true, force_id=true}
-function _M:findInAllInventories(name, getname)
+-- @param checkItemInventory objects stored inside other objects are checked if this is true
+function _M:findInAllInventories(name, getname, checkItemInventory)
 	for inven_id, inven in pairs(self.inven) do
 		local o, item = self:findInInventory(inven, name, getname)
 		if o and item then return o, item, inven_id end
+		if checkItemInventory == true then
+			for item, o in ipairs(inven) do
+				local i_o, i_item, i_inven_id = o:findInAllInventories(name, getname, checkItemInventory)
+				if i_o and i_item and i_inven_id then return i_o, i_item, i_inven_id end
+			end
+		end
+	end
+end
+
+--- Returns the first object with a non nil variable
+-- @param var a string containing the name of the varible to look for
+-- @param checkItemInventory objects stored inside other objects are checked if this is true
+function _M:findObjectWithVariable(var, checkItemInventory)
+	for inven_id, inven in pairs(self.inven) do	
+		for item, o in ipairs(inven) do
+			if o[var] ~= nil then return o end
+			if checkItemInventory == true then
+				local i_o = o:findObjectWithVariable(var, checkItemInventory)
+				if i_o then return i_o end
+			end
+		end
 	end
 end
 
