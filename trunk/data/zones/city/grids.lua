@@ -1495,67 +1495,93 @@ newEntity{
 }
 
 newEntity{
-   base = 'CHAIN_LINK_FENCE'
+   base = 'CHAIN_LINK_FENCE',
    define_as = 'WALL_CHAIN_FENCE_EW_CENTER',
-   image = 'tiles/terrain/walls/chainfencecenterEW.png',
+   image = 'tiles/terrain/walls/chainfencecenterEW.png'
 }
 
 newEntity{
-   base = 'CHAIN_LINK_FENCE'
+   base = 'CHAIN_LINK_FENCE',
    define_as = 'WALL_CHAIN_FENCE_EW_LCORNER',
-   image = 'tiles/terrain/walls/chainfencecornerEW.png',
+   image = 'tiles/terrain/walls/chainfencecornerEW.png'
 }
 
 newEntity{
-   base = 'CHAIN_LINK_FENCE'
+   base = 'CHAIN_LINK_FENCE',
    define_as = 'WALL_CHAIN_FENCE_EW_RCORNER',
-   image = 'tiles/terrain/walls/chainfencecornerEW2.png',
+   image = 'tiles/terrain/walls/chainfencecornerEW2.png'
 }
 
 newEntity{
-   base = 'CHAIN_LINK_FENCE'
+   base = 'CHAIN_LINK_FENCE',
    define_as = 'WALL_CHAIN_FENCE_EW_BLCORNER',
-   image = 'tiles/terrain/walls/chainfencebottomcornerEW.png',
+   image = 'tiles/terrain/walls/chainfencebottomcornerEW.png'
 }
 
 newEntity{
-   base = 'CHAIN_LINK_FENCE'
+   base = 'CHAIN_LINK_FENCE',
    define_as = 'WALL_CHAIN_FENCE_EW_BRCORNER',
-   image = 'tiles/terrain/walls/chainfencebottomcornerEW2.png',
+   image = 'tiles/terrain/walls/chainfencebottomcornerEW2.png'
 }
 
 newEntity{
-   base = 'CHAIN_LINK_FENCE'
+   base = 'CHAIN_LINK_FENCE',
    define_as = 'WALL_CHAIN_FENCE_NS_LEFT',
-   image = 'tiles/terrain/walls/chainfenceNS.png',
+   image = 'tiles/terrain/walls/chainfenceNS.png'
 }
 
 newEntity{
-   base = 'CHAIN_LINK_FENCE'
+   base = 'CHAIN_LINK_FENCE',
    define_as = 'WALL_CHAIN_FENCE_NS_RIGHT',
-   image = 'tiles/terrain/walls/chainfenceNS2.png',
+   image = 'tiles/terrain/walls/chainfenceNS2.png'
 }
 
 newEntity{
     base = 'SIDEWALK',
 	define_as = 'SW_NORTHSOUTH',
-	name = 'sidewalk NS', image = 'tiles/terrain/floors/sidewalk_NS.png',
+	name = 'sidewalk NS', image = 'tiles/terrain/floors/sidewalk_NS.png'
 }
 
 newEntity{
     base = 'SIDEWALK',
 	define_as = 'SW_EASTWEST',
-	name = 'sidewalk EW', image = 'tiles/terrain/floors/sidewalk_EW.png',
+	name = 'sidewalk EW', image = 'tiles/terrain/floors/sidewalk_EW.png'
 }
 
 newEntity{
     base = 'SIDEWALK',
 	define_as = 'SW_CRACK_NS',
-	name = 'sidewalk cracked NS', image = 'tiles/terrain/floors/sidewalk_crack_NS.png',
+	name = 'sidewalk cracked NS', image = 'tiles/terrain/floors/sidewalk_crack_NS.png'
 }
 
 newEntity{
     base = 'SIDEWALK',
 	define_as = 'SW_CRACK_EW',
-	name = 'sidewalk cracked EW', image = 'tiles/terrain/floors/sidewalk_crack_EW.png',
+	name = 'sidewalk cracked EW', image = 'tiles/terrain/floors/sidewalk_crack_EW.png'
+}
+
+newEntity{
+   define_as = 'TOMBSTONE',
+   display = '+', color_r=19, color_g=54, color_b=35,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'Somebody died.'
+}
+
+newEntity{
+    base = 'TOMBSTONE',
+	define_as = 'TOMBSTONE_1',
+	name = 'tombstone 1', image = 'tiles/terrain/misc/tombstone1.png'
+}
+
+newEntity{
+    base = 'TOMBSTONE',
+	define_as = 'TOMBSTONE_2',
+	name = 'tombstone 2', image = 'tiles/terrain/misc/tombstone2.png'
+}
+
+newEntity{
+    base = 'TOMBSTONE',
+	define_as = 'TOMBSTONE_3',
+	name = 'tombstone 3', image = 'tiles/terrain/misc/tombstone3.png'
 }

@@ -1,6 +1,6 @@
 --Cheap Motel
 --Nenjin
--20x20
+--20x20
 
 defineTile('P', 'FLOOR_PAVEMENT')
 defineTile('*', 'WALL_BRICK')
@@ -19,24 +19,23 @@ defineTile('c', 'CHAIR_WOODEN')
 defineTile('t', 'WC')
 
 return{
-PPPPPPPPPPPPPPPPPPPP
-PPPPPPPPPPPPPPPPPPPP
-PP****w**..***w***PP
-PP*]D,,,w..w,,,D]*PP
-PP*t*Bb,D.:D,Bb*t*PP
-PP*******::*******PP
-PP*]D,,,D.:D,Bb*t*PP
-PP*t*Bb,w..w,,,D]*PP
-PP*******..*******PP
-PP*]D,,,D:.D,Bb*t*PP
-PP*t*Bb,*..w,,,D]*PP
-PP*******..**w****PP
-PP*]D,,,w.::..:..*PP
-PP*t*Bb,D:.:...:.*PP
-PP*******..*D*w***PP
-PP*]D,,,D.:*,,,,,wPP
-PP*t*Bb,w:.wSs,dc*PP
-PP***w***..***w***PP
-PPPPPPPPPPPPPPPPPPPP
-PPPPPPPPPPPPPPPPPPPP
-}
+PPPPPPPPPPPPPPPPPPPP,
+PPPPPPPPPPPPPPPPPPPP,
+PP****w**..***w***PP,
+PP*]D,,,w..w,,,D]*PP,
+PP*t*Bb,D.:D,Bb*t*PP,
+PP*******::*******PP,
+PP*]D,,,D.:D,Bb*t*PP,
+PP*t*Bb,w..w,,,D]*PP,
+PP*******..*******PP,
+PP*]D,,,D:.D,Bb*t*PP,
+PP*t*Bb,*..w,,,D]*PP,
+PP*******..**w****PP,
+PP*]D,,,w.::..:..*PP,
+PP*t*Bb,D:.:...:.*PP,
+PP*******..*D*w***PP,
+PP*]D,,,D.:*,,,,,wPP,
+PP*t*Bb,w:.wSs,dc*PP,
+PP***w***..***w***PP,
+PPPPPPPPPPPPPPPPPPPP,
+PPPPPPPPPPPPPPPPPPPP}
