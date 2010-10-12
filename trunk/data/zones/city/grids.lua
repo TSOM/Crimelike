@@ -1157,7 +1157,7 @@ newEntity{
 }
 
 newEntity{
-   define_as = 'mailbox',
+   define_as = 'MAILBOX',
    image = 'tiles/terrain/misc/mailbox1.png',
    display = '[', color_r=199, color_g=199, color_b=210,
    block_sight = false,
@@ -1299,4 +1299,263 @@ newEntity{
    base = 'WINDOW',
    define_as = 'WINDOW_STORE',
    name = 'store window', image = 'tiles/terrain/windows/store_window.png',
+}
+
+newEntity{
+   base = 'WALL',
+   define_as = 'WALL_COBBLESTONE_GREY',
+   name = 'cobblestone wall', image = 'tiles/terrain/walls/cobblestone_wall.png',
+   tooltip = 'Brick / plaster wall.'
+}
+
+newEntity{
+   base = 'WINDOW',
+   define_as = 'WINDOW_STAINED_GLASS',
+   name = 'stained glass window', image = 'tiles/terrain/windows/window_stainedglass.png',
+}
+
+newEntity{
+   --base = 'DOOR',
+   define_as = 'OLD_DOOR',
+   image = 'tiles/terrain/doors/church_door.png',
+   display = '+', color_r=199, color_g=199, color_b=210,
+   block_sight = true,
+   tooltip = 'An old sturdy door.'
+}
+
+newEntity{
+   define_as = 'ALTAR',
+   image = 'tiles/terrain/furniture/altar.png',
+   display = '+', color_r=19, color_g=185, color_b=25,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'Praise the lord. An altar.'
+}
+
+newEntity{
+   define_as = 'WATER',
+   image = 'tiles/terrain/nature/water.png',
+   display = '~', color_r=19, color_g=25, color_b=215,
+   block_sight = false,
+   does_block_move = true
+}
+
+newEntity{
+   base = 'WINDOW',
+   define_as = 'WINDOW_GRAND',
+   name = 'grand window', image = 'tiles/terrain/windows/window_grand.png'
+}
+
+newEntity{
+   base = 'WINDOW',
+   define_as = 'WINDOW_HOUSE',
+   name = 'house window', image = 'tiles/terrain/windows/window_house.png'
+}
+
+newEntity{
+   base = 'WINDOW',
+   define_as = 'WINDOW_HOUSE_DIRTY',
+   name = 'dirty house window', image = 'tiles/terrain/windows/window_house_dirty.png'
+}
+
+newEntity{
+   base = 'WINDOW',
+   define_as = 'WINDOW_FLOWERS',
+   name = 'window and flower box', image = 'tiles/terrain/windows/window_flowers.png'
+}
+
+newEntity{
+   base = 'WINDOW',
+   define_as = 'WINDOW_HOUSE_FANCY',
+   name = 'fancy house window', image = 'tiles/terrain/windows/window_house_fancy.png'
+}
+
+newEntity{
+   base = 'DOWN',
+   define_as = 'MANHOLE_DOWN',
+   name = 'manhole down', image = 'tiles/terrain/misc/manhole.png',
+   tooltip = 'A manhole leading down'
+}
+
+newEntity{
+   --base = 'DOOR',
+   define_as = 'DOOR_OPEN',
+   image = 'tiles/terrain/doors/door_open.png',
+   display = '+', color_r=199, color_g=199, color_b=210,
+   block_sight = false,
+   tooltip = 'An open door.'
+}
+
+newEntity{
+	base = 'WALL',
+	define_as = 'WALL_STONE_LARGE',
+	display = '=',
+	image = 'tiles/terrain/walls/largestonewall.png'
+}
+
+newEntity{
+	base = 'WALL',
+	define_as = 'WALL_STONE_MEDIUM',
+	display = '=',
+	image = 'tiles/terrain/walls/mediumstonewall.png'
+}
+
+newEntity{
+	define_as = 'ROAD_CROSSWALK',
+	name = 'crosswalk', image = 'tiles/terrain/floors/road_crosswalk.png',
+	display = ' ', color_br=80, color_bg=80, color_bb=80
+}
+
+newEntity{
+	define_as = 'ROAD_PLAIN',
+	name = 'plain road', image = 'tiles/terrain/floors/road_plain.png',
+	display = ' ', color_br=20, color_bg=20, color_bb=20
+}
+
+newEntity{
+	define_as = 'ROAD_HYELLOWDASH',
+	name = 'road lines horizontal', image = 'tiles/terrain/floors/road_yellowdash.png',
+	display = ' ', color_br=40, color_bg=40, color_bb=40
+}
+
+newEntity{
+	define_as = 'ROAD_VYELLOWDASH',
+	name = 'road lines vertical', image = 'tiles/terrain/floors/road_yellowdashv.png',
+	display = ' ', color_br=40, color_bg=40, color_bb=40
+}
+
+newEntity{
+   define_as = 'TREE_DEAD',
+   image = 'tiles/terrain/nature/objects/tree_dead.png',
+   display = 'T', color_r=19, color_g=19, color_b=21,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'A dead tree.'
+}
+
+newEntity{
+   define_as = 'BUSH_LARGE',
+   image = 'tiles/terrain/nature/objects/bush_large.png',
+   display = '8', color_r=19, color_g=199, color_b=21,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'A large bush.'
+}
+
+newEntity{
+   define_as = 'HEDGE_TALL',
+   display = 'H', color_r=19, color_g=199, color_b=21,
+   block_sight = true,
+   does_block_move = true,
+   tooltip = 'A tall hedge.'
+}
+
+newEntity{
+   base = 'HEDGE_TALL',
+   define_as = 'HEDGE_TALL_LEFT',
+   image = 'tiles/terrain/nature/objects/hedge_tall_ledge.png'
+}
+
+newEntity{
+   base = 'HEDGE_TALL',
+   define_as = 'HEDGE_TALL_CENTER',
+   image = 'tiles/terrain/nature/objects/hedge_tall_center.png'
+}
+
+newEntity{
+   base = 'HEDGE_TALL',
+   define_as = 'HEDGE_TALL_RIGHT',
+   image = 'tiles/terrain/nature/objects/hedge_tall_redge.png'
+}
+
+newEntity{
+   base = 'HEDGE_TALL',
+   define_as = 'HEDGE_TALL_UD_TOP',
+   image = 'tiles/terrain/nature/objects/hedge_tall_ud_top.png'
+}
+
+newEntity{
+   base = 'HEDGE_TALL',
+   define_as = 'HEDGE_TALL_UD_CENTER',
+   image = 'tiles/terrain/nature/objects/hedge_tall_ud_center.png'
+}
+
+newEntity{
+   base = 'HEDGE_TALL',
+   define_as = 'HEDGE_TALL_UD_BOTTOM',
+   image = 'tiles/terrain/nature/objects/hedge_tall_ud_bottom.png'
+}
+
+newEntity{
+   define_as = 'CHAIN_LINK_FENCE',
+   display = 'X', color_r=90, color_g=90, color_b=90,
+   block_sight = false,
+   does_block_move = true,
+   tooltip = 'A chain-link fence.'
+}
+
+newEntity{
+   base = 'CHAIN_LINK_FENCE'
+   define_as = 'WALL_CHAIN_FENCE_EW_CENTER',
+   image = 'tiles/terrain/walls/chainfencecenterEW.png',
+}
+
+newEntity{
+   base = 'CHAIN_LINK_FENCE'
+   define_as = 'WALL_CHAIN_FENCE_EW_LCORNER',
+   image = 'tiles/terrain/walls/chainfencecornerEW.png',
+}
+
+newEntity{
+   base = 'CHAIN_LINK_FENCE'
+   define_as = 'WALL_CHAIN_FENCE_EW_RCORNER',
+   image = 'tiles/terrain/walls/chainfencecornerEW2.png',
+}
+
+newEntity{
+   base = 'CHAIN_LINK_FENCE'
+   define_as = 'WALL_CHAIN_FENCE_EW_BLCORNER',
+   image = 'tiles/terrain/walls/chainfencebottomcornerEW.png',
+}
+
+newEntity{
+   base = 'CHAIN_LINK_FENCE'
+   define_as = 'WALL_CHAIN_FENCE_EW_BRCORNER',
+   image = 'tiles/terrain/walls/chainfencebottomcornerEW2.png',
+}
+
+newEntity{
+   base = 'CHAIN_LINK_FENCE'
+   define_as = 'WALL_CHAIN_FENCE_NS_LEFT',
+   image = 'tiles/terrain/walls/chainfenceNS.png',
+}
+
+newEntity{
+   base = 'CHAIN_LINK_FENCE'
+   define_as = 'WALL_CHAIN_FENCE_NS_RIGHT',
+   image = 'tiles/terrain/walls/chainfenceNS2.png',
+}
+
+newEntity{
+    base = 'SIDEWALK',
+	define_as = 'SW_NORTHSOUTH',
+	name = 'sidewalk NS', image = 'tiles/terrain/floors/sidewalk_NS.png',
+}
+
+newEntity{
+    base = 'SIDEWALK',
+	define_as = 'SW_EASTWEST',
+	name = 'sidewalk EW', image = 'tiles/terrain/floors/sidewalk_EW.png',
+}
+
+newEntity{
+    base = 'SIDEWALK',
+	define_as = 'SW_CRACK_NS',
+	name = 'sidewalk cracked NS', image = 'tiles/terrain/floors/sidewalk_crack_NS.png',
+}
+
+newEntity{
+    base = 'SIDEWALK',
+	define_as = 'SW_CRACK_EW',
+	name = 'sidewalk cracked EW', image = 'tiles/terrain/floors/sidewalk_crack_EW.png',
 }
