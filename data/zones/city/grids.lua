@@ -63,27 +63,122 @@ newEntity{
 
 newEntity{
 	define_as = 'STREET',
-	name = 'street', image = 'terrain/marble_floor.png',
+	name = 'street', image = 'tiles/terrain/floors/road_plain.png',
 	display = ' ', back_color=colors.BLACK
 }
 newEntity{
 	define_as = 'STREETLINE',
-	name = 'street-1', image = 'terrain/marble_floor.png',
+	name = 'street-1', image = 'tiles/terrain/floors/road_yellowdash.png',
 	display = '-', color = colors.YELLOW, back_color=colors.BLACK,
-	tooltip = 'street1'
 }
 
 newEntity{
 	define_as = 'STREETLINEB',
-	name = 'street-2', image = 'terrain/marble_floor.png',
+	name = 'street-2', image = 'tiles/terrain/floors/road_yellowdashV.png',
 	display = '|', color = colors.YELLOW, back_color=colors.BLACK,
-	tooltip = 'street2'
 }
+
 newEntity{
 	define_as = 'STREETLINEC',
-	name = 'street-3', image = 'terrain/marble_floor.png',
+	name = 'street-3', image = 'tiles/terrain/floors/road_yellowdashX.png',
 	display = '.', color = colors.YELLOW, back_color=colors.BLACK,
 	tooltip = 'street3'
+}
+
+newEntity{
+	define_as = 'KERBTOP',
+	name = 'kerb-top', image = 'tiles/terrain/floors/road_kerb_T.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBTOPDRAIN',
+	name = 'kerb-top-drain', image = 'tiles/terrain/floors/road_kerb_T_drain.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBRIGHT',
+	name = 'kerb-right', image = 'tiles/terrain/floors/road_kerb_R.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBRIGHTDRAIN',
+	name = 'kerb-right-drain', image = 'tiles/terrain/floors/road_kerb_R_drain.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBLEFT',
+	name = 'kerb-left', image = 'tiles/terrain/floors/road_kerb_L.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBLEFTDRAIN',
+	name = 'kerb-left-drain', image = 'tiles/terrain/floors/road_kerb_L_drain.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBBOTTOM',
+	name = 'kerb-bottom', image = 'tiles/terrain/floors/road_kerb_B.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBBOTTOMDRAIN',
+	name = 'kerb-bottom-drain', image = 'tiles/terrain/floors/road_kerb_B_drain.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBTL',
+	name = 'kerb-tl', image = 'tiles/terrain/floors/road_kerb_TL_corner.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBTR',
+	name = 'kerb-tr', image = 'tiles/terrain/floors/road_kerb_TR_corner.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBBL',
+	name = 'kerb-bl', image = 'tiles/terrain/floors/road_kerb_BL_corner.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBBR',
+	name = 'kerb-br', image = 'tiles/terrain/floors/road_kerb_BR_corner.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBQ',
+	name = 'kerb-q', image = 'tiles/terrain/floors/road_kerb_q.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBF',
+	name = 'kerb-f', image = 'tiles/terrain/floors/road_kerb_f.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBJ',
+	name = 'kerb-j', image = 'tiles/terrain/floors/road_kerb_j.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
+}
+
+newEntity{
+	define_as = 'KERBK',
+	name = 'kerb-k', image = 'tiles/terrain/floors/road_kerb_k.png',
+	display = ' ', color = colors.YELLOW, back_color=colors.BLACK,
 }
 
 newEntity{
