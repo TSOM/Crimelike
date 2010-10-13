@@ -17,88 +17,88 @@ function _M:init(zone, map, level, data)
 	self.tiles = {}
 self.legend = {}
 self.legend['-'] = {
+[[llLll]],
 [[     ]],
+[[|||||]],
 [[     ]],
-[[-----]],
-[[     ]],
-[[     ]],
+[[rrRrr]],
 }
 self.legend['|'] = {
-[[  |  ]],
-[[  |  ]],
-[[  |  ]],
-[[  |  ]],
-[[  |  ]],
+[[t - b]],
+[[t - b]],
+[[T - B]],
+[[t - b]],
+[[t - b]],
 }
 
 self.legend['+'] = {
-[[  |  ]],
-[[  |  ]],
-[[--+--]],
-[[  |  ]],
-[[  |  ]],
+[[1 - 3]],
+[[  -  ]],
+[[||+||]],
+[[  -  ]],
+[[2 - 4]],
 }
 
 self.legend['J'] = {
-[[  |  ]],
-[[  |  ]],
-[[--+  ]],
-[[     ]],
-[[     ]],
+[[1 - r]],
+[[  - r]],
+[[||+ R]],
+[[    r]],
+[[bbBbJ]],
 }
 
 self.legend["L"] = {
-[[  |  ]],
-[[  |  ]],
-[[  +--]],
-[[     ]],
-[[     ]],
+[[t - 3]],
+[[t -  ]],
+[[T +||]],
+[[t    ]],
+[[qrRrr]],
 }
 self.legend['f'] = {
-[[     ]],
-[[     ]],
-[[  +--]],
-[[  |  ]],
-[[  |  ]],
+[[flLll]],
+[[t    ]],
+[[T +||]],
+[[t -  ]],
+[[t - 4]],
 }
 self.legend['q'] = {
-[[     ]],
-[[     ]],
-[[--+  ]],
-[[  |  ]],
-[[  |  ]],
+[[llLlL]],
+[[    b]],
+[[||+ B]],
+[[  - b]],
+[[2 - b]],
 }
 self.legend['A'] = {
-[[  |  ]],
-[[  |  ]],
-[[--+--]],
+[[1 - 3]],
+[[  -  ]],
+[[||+||]],
 [[     ]],
-[[     ]],
+[[rrRrr]],
 }
 self.legend['4'] = {
-[[  |  ]],
-[[  |  ]],
-[[--+  ]],
-[[  |  ]],
-[[  |  ]],
+[[1 - b]],
+[[  - b]],
+[[||+ B]],
+[[  - b]],
+[[2 - b]],
 }
 self.legend['E'] = {
-[[  |  ]],
-[[  |  ]],
-[[  +--]],
-[[  |  ]],
-[[  |  ]],
+[[t - 3]],
+[[t -  ]],
+[[T +||]],
+[[t -  ]],
+[[t - 4]],
 }
 self.legend['T'] = {
+[[llLll]],
 [[     ]],
-[[     ]],
-[[--+--]],
-[[  |  ]],
-[[  |  ]],
+[[||+||]],
+[[  -  ]],
+[[2 - 4]],
 }
 	self:createBlankMap()
 end
-	
+
 
 function _M:createBlankMap()
 
@@ -132,17 +132,17 @@ local col = 2
 	return r + 1
 
 	end
-	
+
 	while row <= maxh - 1 do
-	
+
 		if city_map[row][col] == '*' then
-		
+
 			--If right is street, and down is street and top left not plot and top right not plot then
 			if city_map[row][col + 1] == '*' and city_map[row + 1][col] == '*' and city_map[row - 1][col - 1] ~= 'X' and city_map[row - 1][col + 1] ~= 'X'then
-			
+
 			local availh = maxh - row
 			local availw = maxw - col
-			
+
 				for i = 1, maxPlotSize * 2 do
 					--Can probably do this check before this for loop
 					if col + i == maxw then
@@ -150,9 +150,9 @@ local col = 2
 						availw = i
 						end
 					break
-					
+
 					end
-					
+
 					if city_map[row][col + i + 1] == 'X' or city_map[row - 1][col + i + 1] == 'X' then
 						if i < availw then
 						availw = i
@@ -160,16 +160,16 @@ local col = 2
 					break
 					end
 				end
-				
+
 				for i = 1, maxPlotSize * 2 do
-				
+
 					if row + i == maxh then
 						if i < availh then
 						availh = i
 						end
 					break
 					end
-					
+
 					if city_map[row + i + 1][col] == 'X' or city_map[row + i + 1][col - 1] == 'X' then
 						if i < availh then
 						availh = i
@@ -177,10 +177,10 @@ local col = 2
 					break
 					end
 				end
-				
+
 			local plotw = rng.range(minPlotSize,maxPlotSize)
 			local ploth = rng.range(minPlotSize,maxPlotSize)
-			
+
 			if availw < (minPlotSize + plotw + 1) then plotw = availw end
 			if availh < (minPlotSize + ploth + 1) then ploth = availh end
 			if ploth > availh then ploth = availh end
@@ -191,32 +191,32 @@ local col = 2
 					city_map[row + r][col + c] = 'X'
 					end
 				end
-			
+
 				col = col + plotw
 					print('CITY')
 					for k,v in ipairs(city_map) do
 					print(string.Implode('',v))
 					end
-				
+
 			end
-		
+
 		end
 		col = col + 1
 		if col > maxw then
 			col = 2
-			row = row + 1		
+			row = row + 1
 		end
 	end
-	
+
 	---MAKE THE STREETS
 		row = 1
 		col = 1
 		while row <= maxh do
-	
+
 			if city_map[row][col] == '*' then
-			
+
 				local east = city_map[row][col + 1] or "X"
-				
+
 				local south = 'X'
 				local north = 'X'
 				if row < maxh then
@@ -265,11 +265,11 @@ local col = 2
 					end
 				end
 			end
-		
+
 		col = col + 1
 			if col > maxw then
 				col = 1
-				row = row + 1		
+				row = row + 1
 			end
 		end
 	row = 1
@@ -278,19 +278,19 @@ local col = 2
 	while row <= maxh do
 	local curplotw = 1
 	local curploth = 1
-	
+
 		if city_map[row][col] == 'X' then
 			for i = 1, maxPlotSize * 2 do
-			
+
 			--city_map[row][col + i - 1] = 'Y'
-			
+
 				if city_map[row][col + i] ~= 'X' then
 				curplotw = i
 				break
 
 				end
 			end
-			
+
 			for i = 1, maxPlotSize * 2 do
 				--city_map[row + i - 1][col] = 'Y'
 				if city_map[row +i][col] ~= 'X' then
@@ -298,10 +298,10 @@ local col = 2
 				break
 				end
 			end
-			
+
 			self:chooseTileBlock(row,col,curplotw,curploth)
 				for n = 0, curploth - 1 do
-					for m = 0, curplotw - 1 do 
+					for m = 0, curplotw - 1 do
 					local tdoo = row+n
 					local tboo = col+m
 					city_map[row+n][col+m] = 'Y'
@@ -309,16 +309,16 @@ local col = 2
 				end
 		elseif city_map[row][col] ~= 'Y' then
 		self:placeStreetBlock(row, col)
-		
+
 		end
 
 		col = col + curplotw
 		if col > maxw then
 			col = 1
-			row = row + 1		
+			row = row + 1
 		end
 	end
-	
+
 	print('CITY')
 	for k,v in ipairs(city_map) do
 	print(string.Implode('',v))
@@ -369,7 +369,7 @@ function _M:determineRotation(fullpath, curplotw,curploth)
 	setfenv(f, setmetatable(g, {__index=_G}))
 	local ts, err = f()
 	if not ts and err then error(err) end
-	
+
 	self.tiles = t
 
 
@@ -377,9 +377,9 @@ for k,v in pairs (ts) do
 ts[k] = string.Explode("",v)
 
 end
-	
+
 local rotationnum = 1
-if curplotw == curploth then 
+if curplotw == curploth then
 rotationum = rng.range(1,4)
 elseif curplotw > curploth then
 	if rng.percent(50) then
@@ -406,16 +406,16 @@ t = table.Copy(ts)
 
 --All rotations are negative
 		--90 degrees
-		
+
 		if rotationnum == 1 then
-			
+
 			local mx, my = #ts[1], #ts
 			for j = 1, my do
 				for ri = 1, mx do
 				local i = mx - ri + 1
 				t[i] = t[i] or {}
 				t[i][j] = ts[j][ri]
-				end 
+				end
 			end
 
 		-- 180degree rotation
@@ -471,6 +471,22 @@ streetclasses[' '] = 'STREET'
 streetclasses['-'] = 'STREETLINE'
 streetclasses['|'] = 'STREETLINEB'
 streetclasses['+'] = 'STREETLINEC'
+streetclasses['t'] = 'KERBTOP'
+streetclasses['T'] = 'KERBTOPDRAIN'
+streetclasses['l'] = 'KERBLEFT'
+streetclasses['L'] = 'KERBLEFTDRAIN'
+streetclasses['r'] = 'KERBRIGHT'
+streetclasses['R'] = 'KERBRIGHTDRAIN'
+streetclasses['b'] = 'KERBBOTTOM'
+streetclasses['B'] = 'KERBBOTTOMDRAIN'
+streetclasses['1'] = 'KERBTL'
+streetclasses['2'] = 'KERBTR'
+streetclasses['3'] = 'KERBBL'
+streetclasses['4'] = 'KERBBR'
+streetclasses['q'] = 'KERBQ'
+streetclasses['J'] = 'KERBJ'
+streetclasses['K'] = 'KERBK'
+streetclasses['f'] = 'KERBF'
 
 function _M:placeStreetBlock(row,col)
 local char = city_map[row][col]
@@ -486,7 +502,7 @@ local strtbl = self.legend[char]
 		end
 	end
 
-	
+
 end
 
 
@@ -506,11 +522,11 @@ local chosenplot = nil
 	--while chosenplot == nil do
 		if table.HasValue(fs.list("/mod/data/plots/"),dirName) then
 		local availplots = fs.list("/mod/data/plots/" .. dirName)
-			
-			if availplots[1] == ".svn" then 
+
+			if availplots[1] == ".svn" then
 			table.remove(availplots, 1)
 			end
-			
+
 			while chosenplot == nil do
 				for k,v in pairs (availplots) do
 					if rng.range(1,#availplots) == 1 then
@@ -528,7 +544,7 @@ local chosenplot = nil
 				for i = 1, curplotw * self.blockScale do
 				self.map((row - 1)*self.blockScale - 1 + j,(col - 1)*self.blockScale - 1 + i, Map.TERRAIN, self.grid_list['FLOOR'])
 				end
-				
+
 			end
 		end
 	--end
@@ -540,7 +556,7 @@ function _M:createTile(tileblock,row,col)
 
 
 
-	
+
 	for rownum, tilerow in ipairs(tileblock) do
 		for colnum, tile in ipairs(tilerow) do
 		--self.room_map[row+rownum-1][col + colnum-1] = tile
@@ -548,7 +564,7 @@ function _M:createTile(tileblock,row,col)
 		self.map((row - 1)*self.blockScale+rownum - 1,(col - 1)*self.blockScale + colnum - 1, Map.TERRAIN, self.grid_list[self.tiles[tile]['grid']])
 		end
 	end
-	
+
 end
 
 function _M:generate(lev, old_lev)
