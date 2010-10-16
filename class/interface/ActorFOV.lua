@@ -94,8 +94,9 @@ function _M:computeFOV(radius, block, apply, force, no_store, cache)
 							--Should probably explain who spotted you.
 								if a == game.player then
 								game.logSeen(a, "You've been spotted")
-								self:runAI("run_to_report",self)
-								self:tryToReport()
+								self.ai = "run_to_report"
+								--self:runAI("run_to_report",self)
+								--self:tryToReport()
 								end
 							end
 						else

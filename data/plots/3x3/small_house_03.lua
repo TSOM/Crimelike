@@ -1,25 +1,23 @@
---Small House, number 3
---AUTHOR: MENDONCA
---15 x 15 plot
+--Small_house_03
+--3x3
+--Author:Mendonca
 
 defineTile('p', 'PAVEMENT')
 defineTile('#', 'WALL_BRICK_DARK')
-defineTile('=', 'COUNTER_WOOD_RED')
-defineTile('.', 'FLOOR_WOOD_TWO')
-defineTile(',', 'CARPET_GREY')
-defineTile('c', 'CONCRETE_FLOOR')
-defineTile('+', 'SINK')
-defineTile('D', 'WALL_BRICK_DARK_DOOR')
+defineTile('=', 'COUNTER_WOODEN_RED')
+defineTile(',', 'FLOOR_WOOD_TWO')
+defineTile('+', 'KITCHEN_SINK_RED')
+defineTile('D', 'DOOR_BRICK_DARK')
 defineTile('O', 'WINDOW_BRICK_DARK')
-defineTile('W', 'WC')
-defineTile('~', 'GRASS_ONE')
-defineTile('N', 'WHB')
+defineTile('W', 'TOILET')
+defineTile('~', 'DARK_GRASS_ONE')
+defineTile('N', 'BASIN_WOODEN_RED')
 defineTile('H', 'SHOWER')
 defineTile('C', 'CHAIR_WOODEN')
 defineTile('T', 'TABLE_WOODEN')
-defineTile('B', 'BED_WOODEN_W')
-defineTile('b', 'BED_WOODEN_E')
-defineTile('%', 'SHELF_METAL')
+defineTile('B', 'BED_WOODEN_E')
+defineTile('b', 'BED_WOODEN_W')
+defineTile('m', 'SHELF_METAL')
 defineTile('/', 'SHELF_WOOD')
 defineTile('x', 'TELEVISION')
 defineTile('X', 'TELEVISION')
@@ -28,18 +26,19 @@ defineTile('S', 'SOFA_DOWN_1')
 defineTile('s', 'SOFA_DOWN_2')
 
 return{
-[[ppppppppppppppp]],
-[[p#####O###O###p]],
-[[p#WN#=+F#..Bb#p]],
-[[p#H.D,,,D....Op]],
-[[p####,,,######p]],
-[[p#//#,,,,,,,,Dp]],
-[[pO..D,,C,,Ss,#p]],
-[[p#..#,CT,,,,,Op]],
-[[p#Bb#,,C,,,X,#p]],
-[[p##O##O###O###p]],
-[[p#%ccDppppppppp]],
-[[p#%cc#p~~~~~~~~]],
-[[p#ccc#p~~~~~~~~]],
-[[p#####p~~~~~~~~]],
-[[ppppppp~~~~~~~~]]}
+[[pppppppppppppp]],
+[[p#####O######p]],
+[[p#WN#=+F#,Bb#p]],
+[[p#H,D,,,D,,,Op]],
+[[p####,,,#####p]],
+[[p#//#,,,,,,,Dp]],
+[[pO,,D,,C,Ss,#p]],
+[[p#,,#,CT,,,,Op]],
+[[p#Bb#,,C,,X,#p]],
+[[p##O####O####p]],
+[[p#m,,D~~~~~~~p]],
+[[p#m,,#~~~~~~~p]],
+[[p#####~~~~~~~p]],
+[[p~~~~~~~~~~~~p]],
+[[pppppppppppppp]]
+}

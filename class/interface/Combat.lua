@@ -35,6 +35,7 @@ function _M:bumpInto(target)
 			game.level.map(self.x, self.y, Map.ACTOR, target)
 			game.level.map(target.x, target.y, Map.ACTOR, self)
 			self.x, self.y, target.x, target.y = target.x, target.y, self.x, self.y
+			game.logSeen(self, "You push aside %s.",target.name)
 		end
 	end
 end
@@ -54,9 +55,10 @@ end
 --- Check if the actor has a bow or sling and corresponding ammo
 function _M:hasGunWeapon()
 	if not self:getInven("MAINHAND") then return nil, "no shooter" end
-	if not self:getInven("AMMO") then return nil, "no ammo" end
+	
 	local weapon = self:getInven("MAINHAND")[1]
-	local ammo = self:getInven("AMMO")[1]
+	local ammo = weapon:getInven("AMMO")[1]
+	if ammo == nil then return nil, "no ammo" end
 	if not weapon or (weapon.ranged ~= "gun") then
 		return nil, "not a gun"
 	end

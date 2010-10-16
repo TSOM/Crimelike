@@ -68,6 +68,16 @@ function _M:takeHit(value, src)
 end
 
 function _M:damageParts(value, part)
+
+local function calcDmg(dmg)
+--MAINHAND = {1, 10}, OFFHAND = {1,10}, BODY = {1,10}, BACK = {1, 10}, HEAD = {1,5}, HANDS = {1,5}, FEET = {1,10}
+
+
+
+return dmg
+
+end
+
 	if part == nil then
 		part = math.random()
 		if part < 0.55 then

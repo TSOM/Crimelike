@@ -35,6 +35,11 @@ return {
 				map={map="testland/start"},
 			},
 		},
+		[1] = {
+			generator = {
+				map={map="testland/start2"},
+			},
+		},
 	},
 
 }

@@ -33,6 +33,7 @@ print("I'm a arunnin")
 		game.logSeen(self, self.name .. " finishes talking and hangs up the phone.")
 		self:sendReports()
 		self.dialing = nil
+		self.ai = "injured_flee"
 		else
 		self.dialing = self.dialing + 1
 		game.logSeen(self, self.name .. " sounds like their talking to the police.")
@@ -44,9 +45,9 @@ print("I'm a arunnin")
 	local phones = {}
 		for k,gridtbl in pairs(core.fov.circle_grids(self.x, self.y, 12, true)) do
 			for x,y in pairs(gridtbl) do
-				if game.level.map:checkAllEntities(k,x, "phone") then 
-				print('Found a phone at ' .. k .. " " .. x)
-				phones[core.fov.distance(self.x, self.y, k, x)] = {k,x}
+				if game.level.map:checkAllEntities(x,k, "phone") then 
+				print('Found a phone at ' .. x .. " " .. k)
+				phones[core.fov.distance(self.x, self.y, x, k)] = {x,k}
 				end
 			end
 		end

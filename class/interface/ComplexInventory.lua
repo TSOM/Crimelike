@@ -56,7 +56,7 @@ end
 function _M:initBody()
 	if self.body then
 		for inven, max in pairs(self.body) do
-			self.inven[self["INVEN_"..inven]] = {max=max[1], maxVolume = max[2], worn=self.inven_def[self["INVEN_"..inven]].is_worn}
+			self.inven[self["INVEN_"..inven]] = {max=max[1], maxVolume = max[2], worn=self.inven_def[self["INVEN_"..inven]].is_worn, cargoRules = max[3]}
 		end
 		self.body = nil
 	end
@@ -143,7 +143,70 @@ function _M:addObject(inven_id, o)
 	if #inven >= inven.max and inven.max ~= -1 then return false end
 
 	if o:check("on_preaddobject", self, inven) then return false end
+	
+	--ContainerRules { tag, string, needed if nil-prohibited if true,
+	--This is put on items and it tells what type of items it can carry.
+	--A single prohibited tag will override any number of positive checks.
 
+	
+	
+	--CargoRules { tag, string, needed if nil-prohibited if true}
+	--This is put on containers and it tells what type of items it can carry.
+	--A single prohibited tag will override any number of positive checks.
+	--[[ CargoRules = {
+	{"type", "Money"},
+	{"subType", "Gun"},
+	{"onFire", true, true}
+	}
+	This container will only accept items that have the type "Money" OR subtype of "Gun", AND does not have onFire tag set to true.]]
+	
+	if o.containerRules ~= nil then
+	local ok = false
+		for k,v in pairs (o.containerRules) do
+			--If tag is PROHIBITED
+			if v[3] then
+			
+				if inven[v[1]] ~= nil and inven[v[1]] == v[2] then
+				return false
+				end
+				
+			else
+			--If a container has this tag we can fit.
+				if inven[v[1]] ~= nil and inven[v[1]] == v[2] then
+				ok = true
+				end
+			end
+		end
+	
+		if ok == false then
+		return false
+		end
+	
+	end
+	
+	if inven.cargoRules ~= nil then
+	local ok = false
+		for k,v in pairs (inven.cargoRules) do
+			--If tag is PROHIBITED
+			if v[3] then
+			
+				if o[v[1]] ~= nil and o[v[1]] == v[2] then
+				return false
+				end
+				
+			else
+			--If item has this tag we can put it in
+				if o[v[1]] ~= nil and o[v[1]] == v[2] then
+				ok = true
+				end
+			end
+		end
+	
+		if ok == false then
+		return false
+		end
+	
+	end
 	-- Ok add it
 	table.insert(inven, o)
 

@@ -41,11 +41,8 @@ setDefaultProjector(function(src, x, y, dam_type, dam)
 	else
 	target = game.level.map(x, y, Map.TERRAIN)
 	--target:takeHit(dam, src)
-	print('Health')
-	print(target.health)
 		if target.health then
 		target.health = target.health - dam
-		print(target.health)
 			if target.health <= 0 then
 				if target.on_destroyed then
 				--Makes the new destroyed tile

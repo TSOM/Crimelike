@@ -49,21 +49,120 @@ newEffect{
 }
 
 newEffect{
-	name = "MIMIC",
-	desc = "Mimic",
+	name = "LIMP",
+	desc = "Limping",
 	type = "physical",
-	status = "beneficial",
+	status = "detrimental",
 	parameters = {},
-	on_gain = function(self, err) return "#Target# appears to be infected!", "+Mimic" end,
-	on_lose = function(self, err) return "#Target# appears normal again.", "-Mimic" end,
+	on_gain = function(self, err) return "#Target# starts to limp", "+limp" end,
+	on_lose = function(self, err) return "#Target# stops limping.", "-limp" end,
 	activate = function(self, eff)
-		eff.previous_faction = self.faction
-        self.faction = "infected"
+		eff.tmpid = self:addTemporaryValue("limp", 1)
 	end,
 	deactivate = function(self, eff)
-		self.faction = eff.previous_faction
+		self:removeTemporaryValue("limp", eff.tmpid)
 	end,
 }
+
+newEffect{
+	name = "CRIPPLE",
+	desc = "Crippled",
+	type = "physical",
+	status = "detrimental",
+	parameters = {},
+	on_gain = function(self, err) return "#Target#'s legs give out from under them", "+cripple" end,
+	on_lose = function(self, err) return "#Target# rises to their feet.", "-cripple" end,
+	activate = function(self, eff)
+		eff.tmpid = self:addTemporaryValue("cripple", 1)
+	end,
+	deactivate = function(self, eff)
+		self:removeTemporaryValue("cripple", eff.tmpid)
+	end,
+}
+
+newEffect{
+	name = "UNCONSIOUS",
+	desc = "Unconsious",
+	type = "physical",
+	status = "detrimental",
+	parameters = {},
+	on_gain = function(self, err) return "#Target# falls unconsious", "+unconsious" end,
+	on_lose = function(self, err) return "#Target# regains consiousness.", "-unconsious" end,
+	activate = function(self, eff)
+		eff.tmpid = self:addTemporaryValue("unconsious", 1)
+	end,
+	deactivate = function(self, eff)
+		self:removeTemporaryValue("unconsious", eff.tmpid)
+	end,
+}
+
+
+newEffect{
+	name = "CONFUSED",
+	desc = "Confused",
+	type = "physical",
+	status = "detrimental",
+	parameters = {},
+	on_gain = function(self, err) return "#Target# looks confused", "+confused" end,
+	on_lose = function(self, err) return "#Target# pulls themseleves together.", "-confused" end,
+	activate = function(self, eff)
+		eff.tmpid = self:addTemporaryValue("confused", 1)
+	end,
+	deactivate = function(self, eff)
+		self:removeTemporaryValue("confused", eff.tmpid)
+	end,
+}
+
+
+newEffect{
+	name = "ENRAGED",
+	desc = "Enraged",
+	type = "physical",
+	status = "detrimental",
+	parameters = {},
+	on_gain = function(self, err) return "#Target# is enraged", "+enraged" end,
+	on_lose = function(self, err) return "#Target# calms down.", "-enraged" end,
+	activate = function(self, eff)
+		eff.tmpid = self:addTemporaryValue("enraged", 1)
+	end,
+	deactivate = function(self, eff)
+		self:removeTemporaryValue("enraged", eff.tmpid)
+	end,
+}
+
+newEffect{
+	name = "NASUEA",
+	desc = "Nauseous",
+	type = "physical",
+	status = "detrimental",
+	parameters = {},
+	on_gain = function(self, err) return "#Target# is nauseous", "+nauseous" end,
+	on_lose = function(self, err) return "#Target# feels better.", "-nauseous" end,
+	activate = function(self, eff)
+		eff.tmpid = self:addTemporaryValue("nauseous", 1)
+	end,
+	deactivate = function(self, eff)
+		self:removeTemporaryValue("nauseous", eff.tmpid)
+	end,
+}
+
+
+newEffect{
+	name = "BLEEDING",
+	desc = "Bleeding",
+	type = "physical",
+	status = "detrimental",
+	parameters = {},
+	on_gain = function(self, err) return "#Target# starts bleeding", "+bleeding" end,
+	on_lose = function(self, err) return "#Target# stops bleeding.", "-bleeding" end,
+	activate = function(self, eff)
+		eff.tmpid = self:addTemporaryValue("bleeding", 1)
+	end,
+	deactivate = function(self, eff)
+		self:removeTemporaryValue("bleeding", eff.tmpid)
+	end,
+}
+
 
 newEffect{
 	name = "ADRENALINE",

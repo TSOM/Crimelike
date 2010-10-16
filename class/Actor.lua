@@ -180,6 +180,8 @@ Faction: %s%s (%s)]]):format(
 	)
 end
 
+
+--We override this in ActorLife
 function _M:onTakeHit(value, src)
 	return value
 end
@@ -202,7 +204,7 @@ function _M:die(src, mutated)
 	end
 	
 	-- Finally drop the body and stuff
-	if not mutated and self.corpse then
+	if self.corpse then
 		local corpse = Object.new(self.corpse)
 		game.zone:addEntity(game.level, corpse, "object", self.x, self.y)
 	end
@@ -274,7 +276,11 @@ end
 -- @return true to continue, false to stop
 function _M:preUseTalent(ab, silent)
 	if not self:enoughEnergy() then print("fail energy") return false end
-
+	if ab.prefunc ~= nil then
+		if ab.prefunc(self,ab) == false then
+		return false
+		end
+	end
 	if not silent then
 		-- Allow for silent talents
         if ab.mode == "sustained" then
@@ -289,7 +295,7 @@ function _M:preUseTalent(ab, silent)
             end
         end
 		if ab.message ~= nil then
-			if ab.message then
+			if ab.message ~= "NONE" then
 				game.logSeen(self, "%s", self:useTalentMessage(ab))
 			end
 		elseif ab.mode == "sustained" and not self:isTalentActive(ab.id) then
@@ -300,6 +306,7 @@ function _M:preUseTalent(ab, silent)
 			game.logSeen(self, "%s uses %s.", self.name:capitalize(), ab.name)
 		end
 	end
+
 	return true
 end
 
