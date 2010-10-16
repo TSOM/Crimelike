@@ -548,16 +548,27 @@ end
 --- Returns the first object with a non nil variable
 -- @param var a string containing the name of the varible to look for
 -- @param checkItemInventory objects stored inside other objects are checked if this is true
-function _M:findObjectWithVariable(var, checkItemInventory)
+-- @param returnAll an array of objects is returned if this is true, otherwise it returns the first object
+function _M:findObjectWithVariable(var, checkItemInventory, returnAll)
+	local results = {}
 	for inven_id, inven in pairs(self.inven) do	
 		for item, o in ipairs(inven) do
-			if o[var] ~= nil then return o end
+			if o[var] ~= nil then
+				table.insert(results, o)
+				if returnAll ~= true then return results end
+			end
 			if checkItemInventory == true then
-				local i_o = o:findObjectWithVariable(var, checkItemInventory)
-				if i_o then return i_o end
+				local i_o = o:findObjectWithVariable(var, checkItemInventory, returnAll)
+				if i_o then
+					for i, object in ipairs(i_o) do
+						table.insert(results, object)
+						if returnAll ~= true then return results end
+					end
+				end
 			end
 		end
 	end
+	return results
 end
 
 function _M:getEncumbrance()
