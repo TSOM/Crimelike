@@ -23,9 +23,10 @@ newEntity{
 	combat = { damrange = 1.4,},
 	ranged = "gun",
 	volume = 4,
-	body = {AMMO = {1,2}},
+	body = {AMMO = {1,2,{{"type", "ammo"}}}},
 	staticVolume = true,
 	desc = [[Guns are used to shoot bullets.]],
+
 }
 
 newEntity{ base = "BASE_GUN",
@@ -444,13 +445,6 @@ newEntity{ base = "BASE_SNIPER",
 	},
 }
 
-newEntity{ base = "BASE_GUN",
-	define_as = "BAZOOKA",
-	name = "Easter Egg Bazooka",
-	rarity = false,
-	volume = 7,
-	desc = [[This classic shoulder-mounted bazooka appears to have been modified.  The bore of the barrel is quite a bit narrower than it should be... about egg-sized in fact.]],
-}
 
 ------------------ AMMO -------------------
 
@@ -482,20 +476,4 @@ newEntity{ base = "BASE_CLIP",
 		apr = 5,
 		physcrit = 1,
 	},
-}
-
-newEntity{ base = "BASE_CLIP",
-	define_as = "EGG_BASKET",
-	name = "easter egg basket",
-	desc = [[A nice wicker easter egg basket with a brightly #RED#c#VIOLET#o#YELLOW#l#GREEN#o#ORANGE#r#PINK#e#BLUE#d #WHITE#eggs inside.]],
-	rarity = false,
-	combat = {
-		dam = 100,
-		apr = 5,
-		physcrit = 1,
-		radius = 2,
-	},
-	quantity = 24,
-	volume = 4,
-	particle = "egg_splat",
 }

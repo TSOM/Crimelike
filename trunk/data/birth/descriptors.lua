@@ -20,7 +20,7 @@ newBirthDescriptor{
 	desc = {
 	},
 	experience = 1.0,
-	body = { MAINHAND = {1, 10}, OFFHAND = {1,10}, BODY = {1,10}, BACK = {1, 10}, HEAD = {1,5}, HANDS = {1,5}, FEET = {1,10}, 
+	body = { MAINHAND = {1, 10}, OFFHAND = {1,10}, BODY = {1,10}, BACK = {1, 10}, HEAD = {1,5}, HANDS = {1,5}, FEET = {1,10}, LEGS = {1,10},
 		AIR = {1,100}, FLOOR = {1,10000} },--SLOT = {Max, MaxVolume}
 	talents_types = {
 		["combat/unarmed"]={true, 0.3},

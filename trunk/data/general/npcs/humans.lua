@@ -39,7 +39,7 @@ newEntity{
 		encumber=150,
 	},
 }
-
+--DOCTOR
 newEntity{ base = "BASE_NPC_HUMAN",
 	name = "doctor", define_as = "DOCTOR",
 	display = "d", color=colors.BLUE,
@@ -52,7 +52,7 @@ newEntity{ base = "BASE_NPC_HUMAN",
 	},
 	corpse = {name = "Corpse of a doctor."}
 }
-
+--NURSE
 newEntity{ base = "BASE_NPC_HUMAN",
 	name = "nurse", define_as = "NURSE",
 	display = "n", color=colors.BLUE,
@@ -64,7 +64,7 @@ newEntity{ base = "BASE_NPC_HUMAN",
 	},
 	corpse = {name = "Corpse of a nurse."}
 }
-
+--PATIENT
 newEntity{ base = "BASE_NPC_HUMAN",
 	name = "patient", define_as = "PATIENT",
 	display = "p", color=colors.BLUE,
@@ -72,7 +72,15 @@ newEntity{ base = "BASE_NPC_HUMAN",
 	level_range = {1, 4}, exp_worth = 1,
 	corpse = {name = "Corpse of a patient."}
 }
-
+--THUG
+newEntity{ base = "BASE_NPC_HUMAN",
+	name = "thug", define_as = "THUG",
+	display = "t", color=colors.RED,
+	desc = [[A thug.]],
+	level_range = {1, 4}, exp_worth = 1,
+	corpse = {name = "Corpse of a thug."}
+}
+--SECURITY
 newEntity{ base = "BASE_NPC_HUMAN",
 	name = "security", define_as = "SECURITY",
 	display = "s", color=colors.BROWN,

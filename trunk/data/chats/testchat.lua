@@ -4,6 +4,7 @@ Ahh, the intruder... Well my 'friend', what shall we do with you? Wy did you kil
 	answers = {
 		{"I heard some cries, and your men ... were in my way. Now what's going on here?", jump="what"},
 		{"I thought there could be some treasures to be had around here.", jump="greed"},
+		{"Suck my cock.", jump= function() return "test" .. rng.range(1,3) end},
 		{"Sorry I have to go!", jump="hostile"},
 	}
 }
@@ -28,6 +29,29 @@ newChat{ id="greed",
 	answers = {
 		{"[attack]", action=function(npc, player) engine.Faction:setFactionReaction(player.faction, npc.faction, -100, true) end},
 		{"Wait! Maybe we could work out some kind of arrangement, you seem to be a pratical men.", jump="offer"},
+	}
+}
+
+
+newChat{ id="test1",
+text = [[Test1]],
+	answers = {
+		{"[attack]", action=function(npc, player) engine.Faction:setFactionReaction(player.faction, npc.faction, -100, true) end},
+		{"Wait! Maybe we could work out some kind of arrangement, you seem to be a practical man.", jump="offer"},
+	}
+}
+newChat{ id="test2",
+text = [[Test2]],
+	answers = {
+		{"[attack]", action=function(npc, player) engine.Faction:setFactionReaction(player.faction, npc.faction, -100, true) end},
+		{"Wait! Maybe we could work out some kind of arrangement, you seem to be a practical man.", jump="offer"},
+	}
+}
+newChat{ id="test3",
+text = [[Test3]],
+	answers = {
+		{"[attack]", action=function(npc, player) engine.Faction:setFactionReaction(player.faction, npc.faction, -100, true) end},
+		{"Wait! Maybe we could work out some kind of arrangement, you seem to be a practical man.", jump="offer"},
 	}
 }
 

@@ -24,6 +24,7 @@ module(..., package.seeall, class.inherit(mod.class.Actor, engine.interface.Acto
 function _M:init(t, no_default)
 	mod.class.Actor.init(self, t, no_default)
 	ActorAI.init(self, t)
+	self.reports = {}
 end
 
 function _M:act()
@@ -47,7 +48,7 @@ function _M:onTakeHit(value, src, dam_type)
 	end
 local fearlevel = self.fearlevel or 0
 
-	if self.fearlevel > 50 or self.coward then
+	if fearlevel > 50 or self.coward then
 	self:runAI("injured_flee")
 	end
 	return mod.class.Actor.onTakeHit(self, value, src)
@@ -59,7 +60,7 @@ function _M:witnessCrime(targetCriminal)
 	
 	else
 	
-	self:tryToReport()
+	--self:tryToReport()
 	
 	end
 

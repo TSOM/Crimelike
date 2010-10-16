@@ -60,6 +60,12 @@ function _M:init(t, no_default)
 	mod.class.Actor.init(self, t, no_default)
 	engine.interface.PlayerHotkeys.init(self, t)
 	self.descriptor = {}
+	self.heat = 0
+	self.identity = 0
+	self.evidence = {}
+	self.evidenceTotal = 0
+	self.noteriety = 0
+	self.move_others = true
 end
 
 function _M:move(x, y, force)
@@ -487,4 +493,100 @@ function _M:playerLevelup(on_finish)
 		local dt = LevelupTalentsDialog.new(self, on_finish)
 		game:registerDialog(dt)
 	end
+end
+
+function _M:addHeat(amount)
+
+self.heat = self.heat + (amount * self.heatMult)
+
+end
+
+function _M:removeHeat(amount)
+
+self.heat = self.heat - amount
+
+end
+
+function _M:addIdentity(amount)
+
+self.identity = self.identity + (amount * self.identityMult)
+
+end
+
+function _M:removeIdentity(amount)
+
+self.identity = self.identity - amount
+
+end
+
+
+
+--Name of Crime, chance of being seen, soundlevel, optional severity level
+
+function _M:commitCrime(crime, visual, audio,severity)
+
+	if self.lastCrime > CurTime + hiden.incidentInterval then
+	self.lastIncident = #self.incidents + 1
+	self.incidents[self.lastIncident] = {crimes = {crime,severity}, time = {time}}
+	else 
+	table.insert(self.incidents['crimes'],{crime,severity})
+	end
+	
+	--CrimeID is {IncidentId, crime#}
+	local currentCrimeID = {#self.incidents,self.incidents[#self.incidents]['crimes'][#self.incidents[#self.incidents]['crimes']]}
+	--Broadcast sound
+	
+	--Check for those who can see it
+	
+	
+	
+end
+
+
+--crime, type of evidence, amount
+
+--addEvidence("burglary", "witness", 3
+
+
+function _M:addEvidence(incidentID, crime, typ, amount, source)
+
+local evidencetbl = {}
+evidencetbl['incident'] = incidentID
+evidencetbl['crime'] = crime
+evidencetbl['type'] = typ
+evidencetbl['amount'] = amount
+evidencetbl['source'] = source
+
+table.insert(self.evidence, evidencetbl)
+
+self.evidenceTotal = self.EvidenceTotal + amount
+
+end
+
+function _M:removeEvidence(amount)
+
+self.evidence = self.evidence - amount
+
+
+end
+
+function _M:calculateTotalEvidence()
+local total = 0
+	for	k,v in pairs (self.Evidence) do
+	total = total + v['amount']
+	end
+return total
+end
+
+
+function _M:addNoteriety(amount, typ)
+
+self.noteriety[typ] = self.noteriety[typ] + (amount * self.noterietyMult)
+
+end
+
+function _M:removeNoteriety(amount)
+
+self.noteriety[typ] = self.noteriety[typ] - amount
+
 end

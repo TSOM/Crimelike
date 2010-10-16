@@ -29,9 +29,7 @@ function _M:init()
 		end,
 	}, {
 		ACCEPT = function()
-			local save = Savefile.new(game.save_name)
-			save:saveGame(game)
-			save:close()
+			savefile_pipe:push(self.save_name, "game", self)
 			util.showMainMenu()
 		end,
 	})

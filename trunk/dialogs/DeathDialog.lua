@@ -107,7 +107,6 @@ function _M:use()
 
 	if act == "exit" then
 	savefile_pipe:push(self.save_name, "game", self)
-	self.log("Saving game...")
 		util.showMainMenu()
 	elseif act == "dump" then
 		game:registerDialog(require("mod.dialogs.CharacterSheet").new(self.actor))

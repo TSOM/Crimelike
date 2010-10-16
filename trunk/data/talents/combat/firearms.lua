@@ -22,7 +22,16 @@ newTalent{
 	type = {"combat/firearms-basic", 1},
 	points = 5,
 	range = function(self, t) return math.floor(10 + self:getTalentLevel(t)*2) end,
-	message = "@Source@ shoots!",
+	prefunc = function(self,t)
+	local weapon, ammo = self:hasGunWeapon()
+		if weapon == nil then
+		game.logPlayer(self, ammo)
+		return false
+		end
+	return true
+	end,
+	--message = "@Source@ shoots!",
+	message = "NONE",
 	action = function(self, t)
         local fudge_func = function(self, t, dist_to_target)
             local frac_dist = dist_to_target / self:getTalentRange(t)

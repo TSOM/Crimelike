@@ -44,6 +44,7 @@ ActorInventory:defineInventory("BACK", "On back", true, "Generally used for back
 ActorInventory:defineInventory("HEAD", "On head", true, "You can wear helmets or crowns on your head")
 ActorInventory:defineInventory("BELT", "Around waist", true, "Belts are worn around your waist.")
 ActorInventory:defineInventory("HANDS", "On hands", true, "Various gloves can be worn on your hands.")
+ActorInventory:defineInventory("LEGS", "On legs", true, "Pants and such.")
 ActorInventory:defineInventory("FEET", "On feet", true, "Sandals or boots can be worn on your feet.")
 ActorInventory:defineInventory("TOOL", "Tool", true, "This is your readied tool, always available immediately.")
 ActorInventory:defineInventory("AMMO", "Ammo", true, "Your readied ammo.")
