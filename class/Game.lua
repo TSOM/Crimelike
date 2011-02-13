@@ -103,7 +103,7 @@ function _M:newGame()
 	Map:setViewerActor(self.player)
 	self:setupDisplayMode()
 
-	local birth = Birther.new(self.player, {"base", "sex", "race", "role", "location" }, function()
+	local birth = Birther.new("Title",self.player, {"base", "sex", "race", "role", "location" }, function()
 		self:changeLevel(self.player.starting_level, self.player.starting_zone)
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
@@ -257,7 +257,8 @@ function _M:onTurn()
 	self.level.map:processEffects()
 end
 
-function _M:display()
+function _M:display(nb_keyframes)
+	nb_keyframes = nb_keyframes or 1
 
 	-- Now the map, if any
 	if self.level and self.level.map and self.level.map.finished then
@@ -286,7 +287,7 @@ function _M:display()
 
 		-- Basic display
 		else
-			self.level.map:display()
+			self.level.map:display(self.level.map.x, self.level.map.y, nb_keyframes)
 			self.target:display()
 		end
 

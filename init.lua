@@ -20,7 +20,7 @@ short_name = "crime"
 author = { "Bay12", "http://sourceforge.net/projects/crimelike/" }
 homepage = ""
 version = {0,1,6}
-engine = {0,9,10}
+engine = {0,9,20,"te4"}
 description = [[
 Testing...1,2,3]]
 starter = "mod.load"

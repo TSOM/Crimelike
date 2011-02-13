@@ -36,7 +36,7 @@ end
 
 function _M:block_move(x, y, e, act, couldpass)
 if act then
-print(self.locked)
+--print(self.locked)
 end
 	-- Open doors
 	if self.locked and act then

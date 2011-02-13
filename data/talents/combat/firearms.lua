@@ -22,10 +22,13 @@ newTalent{
 	type = {"combat/firearms-basic", 1},
 	points = 5,
 	range = function(self, t) return math.floor(10 + self:getTalentLevel(t)*2) end,
-	prefunc = function(self,t)
+	prefunc = function(self,t,silent,fake)
+
 	local weapon, ammo = self:hasGunWeapon()
 		if weapon == nil then
-		game.logPlayer(self, ammo)
+			if not silent then
+			game.logPlayer(self, ammo)
+			end
 		return false
 		end
 	return true
@@ -39,7 +42,7 @@ newTalent{
         end
         local weapon, ammo = self:hasGunWeapon()
         ammo_radius = ammo.combat and ammo.combat.radius or 0
-		local tg = {type="ballbolt", range=self:getTalentRange(t), radius=ammo_radius, talent=t, fudge=fudge_func}
+		local tg = {type="ballbolt", nowarning=true, nolock=true, range=self:getTalentRange(t), radius=ammo_radius, talent=t, fudge=fudge_func}
 		return self:firearmShoot(tg)
 	end,
 	info = function(self, t)

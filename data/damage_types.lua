@@ -17,8 +17,8 @@
 -- The basic stuff used to damage a grid
 setDefaultProjector(function(src, x, y, dam_type, dam)
 	local target = game.level.map(x, y, Map.ACTOR)
-	print('Target')
-	print(target)
+	--print('Target')
+	--print(target)
 	if target then
 		local flash = game.flash.NEUTRAL
 		if target == game.player then flash = game.flash.BAD end

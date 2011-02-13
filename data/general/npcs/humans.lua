@@ -39,6 +39,21 @@ newEntity{
 		encumber=150,
 	},
 }
+
+--BUM
+newEntity{ base = "BASE_NPC_HUMAN",
+	name = "bum", define_as = "BUM",
+	display = "b", color=colors.GRAY,
+	desc = [[Dirty, with a smell to match.]],
+	level_range = {1, 4}, exp_worth = 1,
+	rarity = 4,
+	ai = "move_random",
+	drops = resolvers.drops{nb=2,
+		{type="medical", subtype="medicine", autoreq=true},
+	},
+	corpse = {name = "Corpse of a doctor."}
+}
+
 --DOCTOR
 newEntity{ base = "BASE_NPC_HUMAN",
 	name = "doctor", define_as = "DOCTOR",

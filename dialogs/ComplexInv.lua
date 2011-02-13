@@ -224,8 +224,8 @@ function _M:drawDialog(s)
 	h = sh
 	self:drawWBorder(s, 3, sh, self.iw - 6)
 	for i = 1, #lines do
-		s:drawColorStringBlended(self.font, lines[i], 5, 2 + h)
-		h = h + self.font:lineSkip()
+			s:drawColorStringBlended(self.font, lines[i], 5, 2 + h)
+			h = h + self.font:lineSkip()
 	end
 
 	self:drawSelectionList(s, 2, 5, self.font_h, self.list, self.sel or -1, "name", self.scroll, self.max)

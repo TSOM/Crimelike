@@ -52,6 +52,16 @@ function _M:attackTarget(target, mult)
 	self.did_energy = true
 end
 
+function _M:hasWeapon()
+local weaponTable = {gun = true, melee = true}
+	if weaponTable[self:getInven("MAINHAND")] or weaponTable[self:getInven("OFFHAND")] then
+	return true 
+	else
+	return false
+	end
+end
+
+
 --- Check if the actor has a bow or sling and corresponding ammo
 function _M:hasGunWeapon()
 	if not self:getInven("MAINHAND") then return nil, "no shooter" end
@@ -91,7 +101,6 @@ local function firearm_projectile(tx, ty, tg, self)
     
 	--if dam > 0 then
 		local grids = self:project(tg, tx, ty, function(txx, tyy)
-		print('ESPLODE')
 			DamageType:get(damtype).projector(self, txx, tyy, damtype, dam)
 		end)
 	--end
