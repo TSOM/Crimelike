@@ -78,53 +78,35 @@ function _M:getName(t)
 		end
 	end
 end
-
 --- Gets the full desc of the object
-function _M:getDesc()
-	local c = "#B4B4B4#"
-	local desc
-	desc = { c..self:getName().."#FFFFFF#", self.desc }
-
-	local reqs = self:getRequirementDesc(game.player)
-	if reqs then
-		desc[#desc+1] = reqs
+function _M:getDesc(name_param)
+	local desc = tstring{}
+	name_param = name_param or {}
+	name_param.do_color = true
+		desc:merge(self:getName(name_param):toTString())
+		desc:add({"color", "WHITE"}, true)
+		desc:merge(self.desc:toTString())
+		desc:add({"color", "WHITE"}, true)
+	local reqs = rawget(self, "require")
+	if type(reqs) == type('') then
+		desc:merge(reqs:toTString())
+		desc:add(true)
 	end
-
 	if self.quantity then
-		desc[#desc+1] = ("Quantity: %d"):format(self.quantity)
+		desc:merge((("Quantity: %d"):format(self.quantity)):toTString())
+		desc:add(true)
 	end
-		
 	if self.encumber then
-		desc[#desc+1] = ("#67AD00#%0.2f Encumbrance."):format(self.encumber)
+		desc:add({"color",0x67,0xAD,0x00}, ("%0.2f Encumbrance."):format(self.encumber), {"color", "LAST"})
+		desc:add(true)
 	end
 
-	desc[#desc+1] = ("Type: %s / %s"):format(self.type, self.subtype)
---[[
-	if self.combat then
-		local dm = {}
-		for stat, i in pairs(self.combat.dammod or {}) do
-			dm[#dm+1] = ("+%d%% %s"):format(i * 100, Stats.stats_def[stat].name)
-		end
-		desc[#desc+1] = ("%d Power [Range %0.2f] (%s), %d Attack, %d Armor Penetration, Crit %d%%"):format(self.combat.dam or 0, self.combat.damrange or 1.1, table.concat(dm, ','), self.combat.atk or 0, self.combat.apr or 0, self.combat.physcrit or 0)
-		if self.combat.range then desc[#desc+1] = "Firing range: "..self.combat.range end
-		desc[#desc+1] = ""
-	end
-
-	local w = self.wielder or {}
-	if w.combat_atk or w.combat_dam or w.combat_apr then desc[#desc+1] = ("Attack %d, Armor Penetration %d, Physical Crit %d%%, Physical power %d"):format(w.combat_atk or 0, w.combat_apr or 0, w.combat_physcrit or 0, w.combat_dam or 0) end
-	if w.combat_armor or w.combat_def then desc[#desc+1] = ("Armor %d, Defense %d"):format(w.combat_armor or 0, w.combat_def or 0) end
-	if w.fatigue then desc[#desc+1] = ("Fatigue %d%%"):format(w.fatigue) end
-
-	if w.melee_project then
-		local rs = {}
-		for typ, dam in pairs(w.melee_project) do
-			rs[#rs+1] = ("%d %s"):format(dam, DamageType.dam_def[typ].name)
-		end
-		desc[#desc+1] = ("Damage on hit: %s."):format(table.concat(rs, ','))
-	end
---]]
+	desc:merge((("Type: %s / %s"):format(self.type, self.subtype)):toTString())
+	desc:add(true)
 	local use_desc = self:getUseDesc()
-	if use_desc then desc[#desc+1] = use_desc end
+		if use_desc then
+		desc:merge(use_desc:toTString()) 
+		end
 
-	return table.concat(desc, "\n")
+	return desc:toString()
 end

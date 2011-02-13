@@ -82,7 +82,7 @@ end
 function _M:checkThresholds(targetActor)
 
 	for i = 1, #self.heatStages do
-		if targetActor.heat < self.heatStages[i] then
+		if targetActor.heat < self.heatStages[i][1] then
 		--Set player heat stage and stuff
 		break
 		end

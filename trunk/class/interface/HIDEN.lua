@@ -126,7 +126,7 @@ function _M:commitCrime(crime, visual, audio,severity)
 
 	if self.lastCrime > CurTime + hiden.incidentInterval then
 	self.lastIncident = #self.incidents + 1
-	self.incidents[self.lastIncident] = {crimes = {crime,severity}, time = {time}}
+	self.incidents[self.lastIncident] = {crimes = {crime,severity}, time = {game.turn}}
 	else 
 	table.insert(self.incidents['crimes'],{crime,severity})
 	end
@@ -134,6 +134,9 @@ function _M:commitCrime(crime, visual, audio,severity)
 	--CrimeID is {IncidentId, crime#}
 	local currentCrimeID = {#self.incidents,self.incidents[#self.incidents]['crimes'][#self.incidents[#self.incidents]['crimes']]}
 	--Broadcast sound
+	
+	
+	
 	
 	--Check for those who can see it
 	

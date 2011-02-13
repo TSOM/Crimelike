@@ -141,7 +141,9 @@ function _M:move(x, y, force)
 	end
 	-- Check if the actor is running
 	if self:attr("sprint") then
-		energy_per_step = game.energy_to_act / self:attr("movement_speedup")
+
+		energy_per_step = game.energy_to_act * 0.75
+		--self:attr("movement_speedup")
 		stamina_per_step = stamina_per_step + 1 + 10 * self:getEncumbrance() / self:getMaxEncumbrance()
 	end
 	if force or self:enoughEnergy(energy_per_step) then
@@ -207,6 +209,7 @@ function _M:die(src, mutated)
 	if self.corpse then
 		local corpse = Object.new(self.corpse)
 		game.zone:addEntity(game.level, corpse, "object", self.x, self.y)
+		corpse.desc = "Gross"
 	end
 	for inven_id, inven in pairs(self.inven) do
 		for i, o in ipairs(inven) do
@@ -274,10 +277,10 @@ end
 -- Check the actor can cast it
 -- @param ab the talent (not the id, the table)
 -- @return true to continue, false to stop
-function _M:preUseTalent(ab, silent)
+function _M:preUseTalent(ab, silent, fake)
 	if not self:enoughEnergy() then print("fail energy") return false end
 	if ab.prefunc ~= nil then
-		if ab.prefunc(self,ab) == false then
+		if ab.prefunc(self,ab, silent, fake) == false then
 		return false
 		end
 	end

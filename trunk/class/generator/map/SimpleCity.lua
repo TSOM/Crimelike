@@ -134,7 +134,7 @@ local col = 2
 	end
 
 	while row <= maxh - 1 do
-
+	print('StuckA')
 		if city_map[row][col] == '*' then
 
 			--If right is street, and down is street and top left not plot and top right not plot then
@@ -212,7 +212,7 @@ local col = 2
 		row = 1
 		col = 1
 		while row <= maxh do
-
+		print('StuckC')
 			if city_map[row][col] == '*' then
 
 				local east = city_map[row][col + 1] or "X"
@@ -317,6 +317,9 @@ local col = 2
 			col = 1
 			row = row + 1
 		end
+	print('StuckB')
+	print(row)
+	print(col)
 	end
 
 	print('CITY')
@@ -526,19 +529,23 @@ local chosenplot = nil
 			if availplots[1] == ".svn" then
 			table.remove(availplots, 1)
 			end
-
-			while chosenplot == nil do
-				for k,v in pairs (availplots) do
-					if rng.range(1,#availplots) == 1 then
-					chosenplot = v
-					print(chosenplot)
-					self:createTile(self:determineRotation(dirName .. "/" .. chosenplot, curplotw,curploth),row,col)
-					break
+			
+			if #availplots ~= 0 then
+				while chosenplot == nil do
+				print('Stuck in plot loop')
+					for k,v in pairs (availplots) do
+						if rng.range(1,#availplots) == 1 then
+						chosenplot = v
+						print(chosenplot)
+						self:createTile(self:determineRotation(dirName .. "/" .. chosenplot, curplotw,curploth),row,col)
+						break
+						end
 					end
 				end
-			end
 
-		else
+			end
+		end
+		if chosenplot == nil then
 		print("No plots with dimension " .. curplotw .. "x" .. curploth)
 			for j = 1, curploth * self.blockScale do
 				for i = 1, curplotw * self.blockScale do

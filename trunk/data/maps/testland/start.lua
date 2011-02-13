@@ -28,7 +28,7 @@ defineTile('D', 'DOOR')
 defineTile('P', 'PHONE')
 defineTile('T', 'FLOOR', 'BRIEFCASE')
 defineTile('X', 'FLOOR', 'BRIEFCASE','BASE_NPC_HUMAN')
-defineTile('B', 'FLOOR',nil,'BASE_NPC_HUMAN')
+defineTile('B', 'FLOOR',nil,'BUM')
 
 return [[
 ##################################################################################################

@@ -28,7 +28,6 @@ local ActorTemporaryEffects = require "engine.interface.ActorTemporaryEffects"
 local Birther = require "engine.Birther"
 local Faction = require "engine.Faction"
 local Quest = require "engine.Quest"
-print('Penis')
 PrintTable(fs.list("/data/"))
 -- Usefull keybinds
 KeyBind:load("move,hotkeys,inventory,actions,debug,moreactions")
