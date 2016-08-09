@@ -1,5 +1,9 @@
 #Crimelike
 
+###About  
+Imported from abandoned SourceForge game "Crimelike" that can  
+be found here: https://sourceforge.net/projects/crimelike/. For more information read the original readme file below.
+
 ###Readme file from original repository.  
 >This is a readme file that will be filled with more important stuff when someone gets around to it, hehe.
 
@@ -19,5 +23,4 @@
 
 >If this readme is unclear in any way, go send me a PM or post on the forums about what I should add.
 
-###About  
-Imported from abandoned SourceForge game "Crimelike" that can be found here: https://sourceforge.net/projects/crimelike/.
+
